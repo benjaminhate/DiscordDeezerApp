@@ -15,6 +15,11 @@ router.post('/', (req, res, next) => {
     next();
 });
 
+router.get('/:user', (req, res) => {
+    let user = data.users.findUser(req.params.user);
+    res.send(user);
+});
+
 router.post('/:user', (req, res, next) => {
     let user = data.users.findUser(req.params.user);
     user.addYearlyData(req.body);
@@ -30,6 +35,12 @@ router.put('/:user', (req, res, next) => {
 router.delete('/:user', (req, res, next) => {
     data.users.deleteUser(req.params.user);
     next();
+});
+
+router.get('/:user/:year', (req, res) => {
+    let user = data.users.findUser(req.params.user);
+    let year = user.findYear(req.params.year);
+    res.send(year);
 });
 
 router.post('/:user/:year', (req, res, next) => {
@@ -53,6 +64,13 @@ router.delete('/:user/:year', (req, res, next) => {
     let user = data.users.findUser(req.params.user);
     user.delete(req.params.year);
     next();
+});
+
+router.get('/:user/:year/:month', (req, res) => {
+    let user = data.users.findUser(req.params.user);
+    let year = user.findYear(req.params.year);
+    let month = year.findMonth(req.params.month);
+    res.send(month);
 });
 
 router.post('/:user/:year/:month', (req, res, next) => {
@@ -82,6 +100,6 @@ router.delete('/:user/:year/:month', (req, res, next) => {
 router.use((req, res) => {
     data.users.save();
     res.send(data.users.data);
-})
+});
 
 module.exports = router;
