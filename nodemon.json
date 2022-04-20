@@ -1,0 +1,6 @@
+{
+    "ignore": [
+        "users.json",
+        "node_modules/*"
+    ]
+}

@@ -11,6 +11,10 @@ app.use(logger);
 
 app.use('/api', apiRoutes);
 
+app.use('/', (req, res) => {
+    res.redirect('/api');
+});
+
 app.listen(port, () => {
     console.log(`Server listening on port ${port}`);
 });
