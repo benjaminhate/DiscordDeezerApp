@@ -33,4 +33,8 @@ module.exports = class deezerTopSong{
                 this.artist = topSongData.artist;
         }
     }
+
+    toString(){
+        return `${this.name} - ${this.artist}`;
+    }
 }

@@ -49,22 +49,22 @@
           },
           {
             "month": "Avril",
-            "songs": 661,
-            "minutes": 2238,
-            "songsPerDay": 22,
-            "topArtist": "Stromae",
+            "songs": 419,
+            "minutes": 1496,
+            "songsPerDay": 14,
+            "topArtist": "Depeche Mode",
             "topSongs": [
               {
-                "name": "Fils de joie",
-                "artist": "Stromae"
+                "name": "Master and Servant",
+                "artist": "Depeche Mode"
               },
               {
-                "name": "L'enfer",
-                "artist": "Stromae"
+                "name": "Everything Counts",
+                "artist": "Depeche Mode"
               },
               {
-                "name": "Test",
-                "artist": "JUL"
+                "name": "Bones",
+                "artist": "Imagine Dragons"
               }
             ]
           }
