@@ -67,6 +67,48 @@
                 "artist": "Imagine Dragons"
               }
             ]
+          },
+          {
+            "month": "Mai",
+            "songs": 461,
+            "minutes": 1511,
+            "songsPerDay": 15,
+            "topArtist": "Calogero",
+            "topSongs": [
+              {
+                "name": "Bones",
+                "artist": "Imagine Dragons"
+              },
+              {
+                "name": "Tournent les violons",
+                "artist": "Jean-Jacques Goldman"
+              },
+              {
+                "name": "Shape of You",
+                "artist": "Ed Sheeran"
+              }
+            ]
+          },
+          {
+            "month": "Juin",
+            "songs": 361,
+            "minutes": 1251,
+            "songsPerDay": 13,
+            "topArtist": "Powerwolf",
+            "topSongs": [
+              {
+                "name": "Shape of You",
+                "artist": "Ed Sheeran"
+              },
+              {
+                "name": "Thunderstruck",
+                "artist": "AC/DC"
+              },
+              {
+                "name": "Take Me Out",
+                "artist": "Franz Ferdinand"
+              }
+            ]
           }
         ]
       }

@@ -8,8 +8,9 @@ module.exports = class deezerTopSong{
         if(!str.includes('-')){
             throw new Error(`Song '${str}' does not contain '-' character.`);
         }
-        const parts = str.split('-');
-        return new deezerTopSong(parts[0].trim(), parts[1].trim());
+        const [song, ...artistParts] = str.split('-');
+        const artist = artistParts.join('-');
+        return new deezerTopSong(song.trim(), artist.trim());
     }
 
     static fromJson(json){
