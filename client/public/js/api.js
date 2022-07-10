@@ -6,7 +6,10 @@ async function send(method, url, body = null){
             method: method,
             body: body
         });
-        return await res.json();
+        return {
+            success: res.ok,
+            result: await res.json()
+        };
     } catch (err) {
         return console.error(err);
     }

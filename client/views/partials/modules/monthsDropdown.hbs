@@ -1,0 +1,6 @@
+<select id="monthsDropdown" class="form-select" aria-label="Default select example">
+  <option selected>Selectionnez le mois</option>
+  {{#each months}}
+    <option value="{{this.number}}">{{this.name}}</option>
+  {{/each}}
+</select>

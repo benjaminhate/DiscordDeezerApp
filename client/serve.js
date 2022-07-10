@@ -2,6 +2,8 @@ const express = require('express');
 const path = require('path');
 const hbs = require('hbs');
 
+const common = require('../common');
+
 const router = express.Router();
 
 hbs.registerPartials(path.join(__dirname, 'views/partials'));
@@ -13,8 +15,7 @@ router.use('/bootstrap', express.static(path.join(__dirname, '../node_modules/bo
 router.get('/', (req, res) => {
     res.render('index', {
         subject: 'Test',
-        name: 'our template',
-        link: 'https://www.google.com'
+        months: common.months.months
     });
 });
 

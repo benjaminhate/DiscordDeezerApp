@@ -68,8 +68,20 @@ router.delete('/:user/:year', (req, res, next) => {
 
 router.get('/:user/:year/:month', (req, res) => {
     let user = data.users.findUser(req.params.user);
+    if (user === undefined)
+        return res.status(404).send({
+            msg: `User ${req.params.user} not found`
+        });
     let year = user.findYear(req.params.year);
+    if (year === undefined)
+        return res.status(404).send({
+            msg: `Year ${req.params.year} for user ${req.params.user} not found`
+        });
     let month = year.findMonth(req.params.month);
+    if (month === undefined)
+        return res.status(404).send({
+            msg: `Month ${req.params.month} for year ${req.params.year} and user ${req.params.user} not found`
+        });
     res.send(month);
 });
 

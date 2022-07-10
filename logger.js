@@ -1,4 +1,6 @@
 module.exports = function (req, res, next){
-    console.log(`[${new Date().toLocaleString()}] ${req.method} ${req.originalUrl}`);
+    if(req.originalUrl.startsWith("/api")){
+        console.log(`[${new Date().toLocaleString()}] ${req.method} ${req.originalUrl}`);
+    }
     next();
 };

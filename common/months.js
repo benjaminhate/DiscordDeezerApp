@@ -26,3 +26,10 @@ const month = function (nameOrNumber){
 exports.getMonthNameFromNumber = monthFromNumber;
 exports.getMonthNumberFromName = monthFromName;
 exports.getMonthName = month;
+
+exports.months = monthNames.map(name => {
+    return {
+        number: this.getMonthNumberFromName(name),
+        name: name
+    };
+});
