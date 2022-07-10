@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
+
 <head>
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
@@ -8,27 +9,16 @@
         {{subject}}
     </title>
 </head>
-<body>
-    <div class="container mt-2">
-        {{>test}}
-        <header>
-            <h2>Welcome</h2>
-            <p>Here is the homepage for {{name}}
-            </p>
-        </header>
-        <section>
-            <h2>Here is the body</h2>
-            <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam,
-                repellendus!
-            </p>
-        </section>
-        <footer>
-            <h2>Here is the footer</h2>
-            <p><a href="{{link}}">Unsubscribe</a></p>
-        </footer>
-    </div>
 
+<body>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="./js/index.js"></script>
+    <script src="./js/api.js"></script>
+
+    <div class="container mt-2">
+        {{>navigation}}
+        {{>content}}
+    </div>
 </body>
+
 </html>
