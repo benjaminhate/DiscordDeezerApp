@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:3000/api"
+const baseUrl = `${window.location.origin}/api`
 
 async function send(method, url, jsonPayload = null) {
     let options = {
