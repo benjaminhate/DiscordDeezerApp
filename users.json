@@ -109,6 +109,27 @@
                 "artist": "Franz Ferdinand"
               }
             ]
+          },
+          {
+            "month": "Janvier",
+            "songs": "473",
+            "minutes": "1658",
+            "songsPerDay": "16",
+            "topArtist": "Powerwolf",
+            "topSongs": [
+              {
+                "name": "L’enfer",
+                "artist": "Stromae"
+              },
+              {
+                "name": "Sandstorm",
+                "artist": "Darude"
+              },
+              {
+                "name": "Thunderstruck",
+                "artist": "AC/DC"
+              }
+            ]
           }
         ]
       }

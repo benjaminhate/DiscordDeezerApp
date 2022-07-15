@@ -1,10 +1,7 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const data = require('../data');
 
 const router = express.Router();
-
-router.use(bodyParser.json());
 
 router.get('/', (req, res) => {
     res.send(data.users.data);

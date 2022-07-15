@@ -1,5 +1,6 @@
 require('dotenv/config');
 const express = require('express');
+const bodyParser = require('body-parser');
 
 const app = express();
 const port = process.env.PORT;
@@ -8,6 +9,7 @@ const logger = require('./logger.js');
 const apiRoutes = require('./api').routes;
 const clientServe = require('./client').serve;
 
+app.use(bodyParser.json());
 app.use(logger);
 
 app.use('/api', apiRoutes);
