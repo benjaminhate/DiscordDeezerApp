@@ -1,1 +1,28 @@
 <h1>Compare</h1>
+
+<div class="input-group col-12">
+    <div class="col-md-4">
+        {{> modules/usernameInput id="usernameCompare"}}
+    </div>
+    <div class="col-md-4">
+        {{> modules/yearInput id="yearCompare"}}
+    </div>
+    <div class="col-md-4">
+        {{> modules/monthsDropdown id="monthCompare"}}
+    </div>
+</div>
+
+<div class="col-12">
+    {{> modules/loader id="compareLoader"}}
+</div>
+
+<div>
+    <h3>Génération de message Discord</h3>
+    <button id="comparePreviousMonth" class="btn btn-primary" onclick="comparePreviousMonth()">Comparer au mois précédent</button>
+</div>
+
+<div id="compareContent" class="hidden">
+    {{> modules/textAreaCopy id="compareTextarea" rows="9"}}
+</div>
+
+<script src="./js/compare.js"></script>
