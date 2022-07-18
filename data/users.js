@@ -29,6 +29,12 @@ exports.data = users;
 
 exports.fromJson = fromJson;
 
+exports.addUser = function(userName){
+    let newUser = new userData(userName);
+    users.push(newUser);
+    return newUser;
+}
+
 exports.findUser = function(userName){
     return users.find(u => u.name == userName);
 }

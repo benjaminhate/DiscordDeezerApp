@@ -26,6 +26,12 @@ module.exports = class userData {
         }
     }
 
+    addYear(year){
+        let newYear = new deezerYearlyData(year);
+        this.deezerData.push(newYear);
+        return newYear;
+    }
+
     findYear(year){
         return this.deezerData.find(y => y.year == year);
     }

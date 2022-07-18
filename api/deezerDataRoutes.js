@@ -84,7 +84,11 @@ router.get('/:user/:year/:month', (req, res) => {
 
 router.post('/:user/:year/:month', (req, res, next) => {
     let user = data.users.findUser(req.params.user);
+    if(user === undefined)
+        user = data.users.addUser(req.params.user);
     let year = user.findYear(req.params.year);
+    if(year === undefined)
+        year = user.addYear(req.params.year);
     req.body.month = req.params.month;
     year.addMonthlyData(req.body);
     next();
