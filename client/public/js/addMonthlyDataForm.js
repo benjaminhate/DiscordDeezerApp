@@ -62,9 +62,9 @@ function addMonthlyDataCheckInputs(){
     if(!addMonthlyDataUsernameInput.value
         || !addMonthlyDataYearInput.value
         || !addMonthlyDataMonthDropdown.value
-        || !addMonthlyDataSongsInput.value
-        || !addMonthlyDataMinutesInput.value
-        || !addMonthlyDataSongsPerDayInput.value
+        || !addMonthlyDataSongsInput.valueAsNumber
+        || !addMonthlyDataMinutesInput.valueAsNumber
+        || !addMonthlyDataSongsPerDayInput.valueAsNumber
         || !addMonthlyDataTopArtistInput.value
         || !addMonthlyDataTopSong1NameInput.value
         || !addMonthlyDataTopSong1ArtistInput.value
@@ -79,9 +79,9 @@ function addMonthlyDataCheckInputs(){
 
 function addMonthlyDataGenerateData(){
     return {
-        songs: addMonthlyDataSongsInput.value,
-        minutes: addMonthlyDataMinutesInput.value,
-        songsPerDay: addMonthlyDataSongsPerDayInput.value,
+        songs: addMonthlyDataSongsInput.valueAsNumber,
+        minutes: addMonthlyDataMinutesInput.valueAsNumber,
+        songsPerDay: addMonthlyDataSongsPerDayInput.valueAsNumber,
         topArtist: addMonthlyDataTopArtistInput.value,
         topSongs: [
             {

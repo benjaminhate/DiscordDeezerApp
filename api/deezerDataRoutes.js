@@ -4,28 +4,25 @@ const data = require('../data');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    res.send(data.users.data);
+    res.send(data.users.getUsers());
 });
 
 router.post('/', (req, res, next) => {
-    data.users.fromJson(req.body);
+    data.users.createUsers(req.body);
     next();
 });
 
 router.get('/:user', (req, res) => {
-    let user = data.users.findUser(req.params.user);
-    res.send(user);
+    res.send(data.users.findUser(req.params.user));
 });
 
 router.post('/:user', (req, res, next) => {
-    let user = data.users.findUser(req.params.user);
-    user.addYearlyData(req.body);
+    data.users.addUserYearlyData(req.params.user, req.body);
     next();
 });
 
 router.put('/:user', (req, res, next) => {
-    let user = data.users.findUser(req.params.user);
-    user.modify(req.body);
+    data.users.modifyUser(req.params.user, req.body);
     next();
 });
 
@@ -35,84 +32,56 @@ router.delete('/:user', (req, res, next) => {
 });
 
 router.get('/:user/:year', (req, res) => {
-    let user = data.users.findUser(req.params.user);
-    let year = user.findYear(req.params.year);
-    res.send(year);
+    res.send(data.users.findUserYear(req.params.user, req.params.year));
 });
 
 router.post('/:user/:year', (req, res, next) => {
-    let user = data.users.findUser(req.params.user);
-    let year = user.findYear(req.params.year);
-    year.addMonthlyData(req.body);
+    data.users.addUserMonthlyData(req.params.user, req.params.year, req.body);
     next();
 });
 
 router.put('/:user/:year', (req, res, next) => {
-    let user = data.users.findUser(req.params.user);
-    let year = user.findYear(req.params.year);
-    year.modify({
-        year: req.params.year,
-        ...req.body
-    });
+    data.users.modifyUserYear(req.params.user, req.params.year, req.body);
     next();
 });
 
 router.delete('/:user/:year', (req, res, next) => {
-    let user = data.users.findUser(req.params.user);
-    user.delete(req.params.year);
+    data.users.deleteUserYear(req.params.user, req.params.year);
     next();
 });
 
 router.get('/:user/:year/:month', (req, res) => {
-    let user = data.users.findUser(req.params.user);
-    if (user === undefined)
+    try{
+        res.send(data.users.findUserMonth(req.params.user, req.params.year, req.params.month));
+    }catch(e){
         return res.status(404).send({
-            msg: `User ${req.params.user} not found`
+            msg: e.message
         });
-    let year = user.findYear(req.params.year);
-    if (year === undefined)
-        return res.status(404).send({
-            msg: `Year ${req.params.year} for user ${req.params.user} not found`
-        });
-    let month = year.findMonth(req.params.month);
-    if (month === undefined)
-        return res.status(404).send({
-            msg: `Month ${req.params.month} for year ${req.params.year} and user ${req.params.user} not found`
-        });
-    res.send(month);
+    }
+    
 });
 
 router.post('/:user/:year/:month', (req, res, next) => {
-    let user = data.users.findUser(req.params.user);
-    if(user === undefined)
-        user = data.users.addUser(req.params.user);
-    let year = user.findYear(req.params.year);
-    if(year === undefined)
-        year = user.addYear(req.params.year);
-    req.body.month = req.params.month;
-    year.addMonthlyData(req.body);
+    let monthData = {
+        month: req.params.month,
+        ...req.body
+    };
+    data.users.addUserMonthlyData(req.params.user, req.params.year, monthData);
     next();
 });
 
 router.put('/:user/:year/:month', (req, res, next) => {
-    let user = data.users.findUser(req.params.user);
-    let year = user.findYear(req.params.year);
-    let month = year.findMonth(req.params.month);
-    req.body.month = req.params.month;
-    month.modify(req.body);
+    data.users.modifyUserMonth(req.params.user, req.params.year, req.params.month, req.body);
     next();
 });
 
 router.delete('/:user/:year/:month', (req, res, next) => {
-    let user = data.users.findUser(req.params.user);
-    let year = user.findYear(req.params.year);
-    year.delete(req.params.month);
+    data.users.deleteUserMonth(req.params.user, req.params.year, req.params.month);
     next();
 });
 
 router.use((req, res) => {
-    data.users.save();
-    res.send(data.users.data);
+    res.send(data.users.getUsers());
 });
 
 module.exports = router;
