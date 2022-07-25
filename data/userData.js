@@ -15,6 +15,14 @@ module.exports = class userData {
         return new userData(name, ...deezerData);
     }
 
+    static fromCosmos(cosmosItem){
+        let name = cosmosItem.username;
+        let deezerData = [
+            deezerYearlyData.fromCosmos(cosmosItem)
+        ];
+        return new userData(name, ...deezerData);
+    }
+
     addYearlyData(...yearlyData){
         for(let yd of yearlyData){
             let yearData = deezerYearlyData.fromJson(yd);

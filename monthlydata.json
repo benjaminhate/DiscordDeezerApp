@@ -1,0 +1,140 @@
+[
+    {
+        "username": "bencochoco",
+        "year": 2022,
+        "month": "Février",
+        "songs": 314,
+        "minutes": 984,
+        "songsPerDay": 12,
+        "topArtist": "Howard Shore",
+        "topSongs": [
+            {
+                "name": "Sandstorm",
+                "artist": "Darude"
+            },
+            {
+                "name": "Take me out",
+                "artist": "Franz Ferdinand"
+            },
+            {
+                "name": "Du hast",
+                "artist": "Rammstein"
+            }
+        ]
+    },
+    {
+        "username": "bencochoco",
+        "year": 2022,
+        "month": "Mars",
+        "songs": 661,
+        "minutes": 2238,
+        "songsPerDay": 22,
+        "topArtist": "Stromae",
+        "topSongs": [
+            {
+                "name": "Fils de joie",
+                "artist": "Stromae"
+            },
+            {
+                "name": "L'enfer",
+                "artist": "Stromae"
+            },
+            {
+                "name": "La solassitude",
+                "artist": "Stromae"
+            }
+        ]
+    },
+    {
+        "username": "bencochoco",
+        "year": 2022,
+        "month": "Avril",
+        "songs": 419,
+        "minutes": 1496,
+        "songsPerDay": 14,
+        "topArtist": "Depeche Mode",
+        "topSongs": [
+            {
+                "name": "Master and Servant",
+                "artist": "Depeche Mode"
+            },
+            {
+                "name": "Everything Counts",
+                "artist": "Depeche Mode"
+            },
+            {
+                "name": "Bones",
+                "artist": "Imagine Dragons"
+            }
+        ]
+    },
+    {
+        "username": "bencochoco",
+        "year": 2022,
+        "month": "Mai",
+        "songs": 461,
+        "minutes": 1511,
+        "songsPerDay": 15,
+        "topArtist": "Calogero",
+        "topSongs": [
+            {
+                "name": "Bones",
+                "artist": "Imagine Dragons"
+            },
+            {
+                "name": "Tournent les violons",
+                "artist": "Jean-Jacques Goldman"
+            },
+            {
+                "name": "Shape of You",
+                "artist": "Ed Sheeran"
+            }
+        ]
+    },
+    {
+        "username": "bencochoco",
+        "year": 2022,
+        "month": "Juin",
+        "songs": 361,
+        "minutes": 1251,
+        "songsPerDay": 13,
+        "topArtist": "Powerwolf",
+        "topSongs": [
+            {
+                "name": "Shape of You",
+                "artist": "Ed Sheeran"
+            },
+            {
+                "name": "Thunderstruck",
+                "artist": "AC/DC"
+            },
+            {
+                "name": "Take Me Out",
+                "artist": "Franz Ferdinand"
+            }
+        ]
+    },
+    {
+        "username": "bencochoco",
+        "year": 2022,
+        "month": "Janvier",
+        "songs": 473,
+        "minutes": 1658,
+        "songsPerDay": 16,
+        "topArtist": "Powerwolf",
+        "topSongs": [
+            {
+                "name": "L’enfer",
+                "artist": "Stromae"
+            },
+            {
+                "name": "Sandstorm",
+                "artist": "Darude"
+            },
+            {
+                "name": "Thunderstruck",
+                "artist": "AC/DC"
+            }
+        ]
+    }
+]

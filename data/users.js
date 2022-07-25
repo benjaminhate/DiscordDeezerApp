@@ -74,8 +74,6 @@ exports.findUserYear = function(userName, yearValue){
 }
 
 exports.findUserMonth = function(userName, yearValue, monthValue){
-    console.log(`${userName} - ${yearValue} - ${monthValue}`);
-    console.log(users);
     let user = findUser(userName);
     if (user === undefined)
         throw new Error(`User ${userName} not found`); 

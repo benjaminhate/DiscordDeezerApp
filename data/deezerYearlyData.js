@@ -15,6 +15,14 @@ module.exports = class deezerYearlyData{
         return new deezerYearlyData(year, ...monthsData);
     }
 
+    static fromCosmos(cosmosItem){
+        let year = cosmosItem.year;
+        let monthsData = [
+            deezerMonthlyData.fromJson(cosmosItem)
+        ];
+        return new deezerYearlyData(year, ...monthsData);
+    }
+
     findMonth(month){
         return this.monthsData.find(m => m.month == month);
     }
