@@ -1,3 +1,4 @@
+const _ = require('underscore')
 const deezerYearlyData = require('./deezerYearlyData.js');
 
 module.exports = class userData {
@@ -15,12 +16,13 @@ module.exports = class userData {
         return new userData(name, ...deezerData);
     }
 
-    static fromCosmos(cosmosItem){
-        let name = cosmosItem.username;
-        let deezerData = [
-            deezerYearlyData.fromCosmos(cosmosItem)
-        ];
-        return new userData(name, ...deezerData);
+    static fromCosmos(username, cosmosItems){
+        let deezerData = [];
+        let cosmosItemsYear = _.groupBy(cosmosItems, c => c.year)
+        for(let year in cosmosItemsYear){
+            deezerData.push(deezerYearlyData.fromCosmos(year, cosmosItemsYear[year]))
+        }
+        return new userData(username, ...deezerData);
     }
 
     addYearlyData(...yearlyData){

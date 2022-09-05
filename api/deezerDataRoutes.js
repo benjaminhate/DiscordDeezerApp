@@ -3,7 +3,7 @@ const data = require('../data');
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
+router.get('/', (req, res, next) => {
     next();
 });
 
@@ -13,9 +13,9 @@ router.post('/', (req, res, next) => {
     // next();
 });
 
-router.get('/:user', (req, res) => {
-    res.status(404).send();
-    // res.send(data.users.findUser(req.params.user));
+router.get('/:user', async (req, res) => {
+    // res.status(404).send();
+    res.send(await data.cosmos.users.findUser(req.params.user));
 });
 
 router.post('/:user', (req, res, next) => {
@@ -36,9 +36,9 @@ router.delete('/:user', (req, res, next) => {
     // next();
 });
 
-router.get('/:user/:year', (req, res) => {
-    res.status(404).send();
-    // res.send(data.users.findUserYear(req.params.user, req.params.year));
+router.get('/:user/:year', async (req, res) => {
+    // res.status(404).send();
+    res.send(await data.cosmos.users.findUserYear(req.params.user, req.params.year));
 });
 
 router.post('/:user/:year', (req, res, next) => {

@@ -1,3 +1,4 @@
+const _ = require('underscore');
 const deezerMonthlyData = require('../deezerMonthlyData.js');
 const userData = require('../userData.js');
 const { database } = require('./init.js');
@@ -29,10 +30,30 @@ exports.getUsers = async function(){
     let query = "select * from c"
     let cosmosItems = await queryAsync(query);
     let users = [];
-    for(let cosmosItem of cosmosItems){
-        users.push(userData.fromCosmos(cosmosItem));
+    let cosmosItemsUsers = _.groupBy(cosmosItems, c => c.username);
+    for(let username in cosmosItemsUsers){
+        users.push(userData.fromCosmos(username, cosmosItemsUsers[username]));
     }
     return users;
+}
+
+exports.findUser = async function(userName){
+    let query = "select * from c where c.username = @username"
+    let parameters = [
+        { name: "@username", value: userName }
+    ]
+    let cosmosItems = await queryAsync(query, parameters)
+    return userData.fromCosmos(userName, cosmosItems)
+}
+
+exports.findUserYear = async function(userName, yearValue){
+    let query = "select * from c where c.username = @username and c.year = @year"
+    let parameters = [
+        { name: "@username", value: userName },
+        { name: "@year", value: parseInt(yearValue) }
+    ]
+    let cosmosItems = await queryAsync(query, parameters);
+    return userData.fromCosmos(userName, cosmosItems)
 }
 
 exports.findUserMonth = async function(userName, yearValue, monthValue){

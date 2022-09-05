@@ -47,3 +47,8 @@ function getCompareMessageFromPreviousMonth(user, year, month) {
     let previousYear = months.getMonthNumberFromName(previousMonth) == 12 ? year - 1 : year;
     return getCompareMessage(user, previousYear, previousMonth, year, month);
 }
+
+function getUserData(user){
+    let url = `deezer/${user}`
+    return send('GET', url);
+}

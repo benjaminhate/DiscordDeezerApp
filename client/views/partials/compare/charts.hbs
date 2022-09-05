@@ -1,0 +1,19 @@
+<h1>Charts</h1>
+
+<div class="input-group col-6">
+    <div class="col-4">
+        {{> modules/usernameInput id="usernameCharts"}}
+    </div>
+    <div class="col-2">
+        <button id="compareChartsLoad" class="btn btn-primary" onclick="compareChartsLoad()">Charger</button>
+    </div>
+</div>
+
+<div class="col-12">
+    {{> modules/loader id="compareChartsLoader"}}
+</div>
+
+<canvas id="compareChartsContent" width="400" height="100"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="./js/compare/charts.js"></script>

@@ -1,0 +1,28 @@
+<h1>Discord message</h1>
+
+<div class="input-group col-12">
+    <div class="col-4">
+        {{> modules/usernameInput id="usernameComparePreviousMonth"}}
+    </div>
+    <div class="col-4">
+        {{> modules/yearInput id="yearComparePreviousMonth"}}
+    </div>
+    <div class="col-4">
+        {{> modules/monthsDropdown id="monthComparePreviousMonth"}}
+    </div>
+</div>
+
+<div class="col-12">
+    {{> modules/loader id="comparePreviousMonthLoader"}}
+</div>
+
+<div>
+    <h3>Génération de message Discord</h3>
+    <button id="comparePreviousMonth" class="btn btn-primary" onclick="comparePreviousMonth()">Comparer au mois précédent</button>
+</div>
+
+<div id="comparePreviousMonthContent" class="hidden">
+    {{> modules/textAreaCopy id="comparePreviousMonthTextarea" rows="9"}}
+</div>
+
+<script src="./js/compare/previousMonthDiscordMessage.js"></script>
