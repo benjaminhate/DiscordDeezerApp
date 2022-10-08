@@ -6,8 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js --config nodemon.json",
-    "build:common": "browserify common --s common > client/public/js/common-bundle.js",
-    "scrap": "node scrap.js"
+    "build:common": "browserify common --s common > client/public/js/common-bundle.js"
   },
   "keywords": [],
   "author": "",
