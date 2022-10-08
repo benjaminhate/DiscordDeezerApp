@@ -1,2 +1,2 @@
-exports.users = require('./users.js');
+exports.users = require('./users');
 exports.cosmos = require('./cosmos');

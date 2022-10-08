@@ -1,0 +1,854 @@
+Delivered-To: benitou97@gmail.com
+Received: by 2002:ab0:2eba:0:0:0:0:0 with SMTP id y26csp566706uay;
+        Thu, 3 Mar 2022 03:23:44 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyG4ilejXUMTyTJwUH6MCsBEp7oB6mFUqD7IondLReHLar6mqurF3HoNCUHQPChjKIIoeS2
+X-Received: by 2002:a81:b4b:0:b0:2db:fe55:2790 with SMTP id 72-20020a810b4b000000b002dbfe552790mr9887420ywl.441.1646306624256;
+        Thu, 03 Mar 2022 03:23:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1646306624; cv=none;
+        d=google.com; s=arc-20160816;
+        b=ZlhePItGdbwf45rfXWu5RutlARQkpE4IcuKvg9mXlxfTVJagP5ykTGEfC+bu/TIkpa
+         EWqk11GtSzPAtPN1i8marz/Ropc2JKpFImUQt+3Qy0T5kaEjk/fjJm4gKySORkxYbryk
+         yFWnquXL7pZ5IDrL3RFSy6wssVgaRQFrNaNdns5OHve7qibR83gvqFp4zRKl9QOIloZh
+         RUR1IgyKjBKlBeLnaoB8TLGLoAFfR5bCHEyRFe5EQ5YqGiZxZ1bAN451NVs6Q+X3J9GL
+         O4y6T8+D7TX0j73wZkSA4x24AHjPWU/8IiexSOu7FUub8WzFdqCQUN+GuPTWDYHt30pn
+         kjQg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:reply-to:subject:message-id:mime-version:from:date
+         :content-transfer-encoding:dkim-signature:dkim-signature;
+        bh=xmvaV3WaB5idHZRVfsJYcNGKFF0F/N4N2ixvJ3hd4sA=;
+        b=UvsYhW/2gpWtWCuwGNyjw2UzkyUKOBAkv/U/Tbct2u+OSblU556dkLFxK9zuuFvi0n
+         p08RN5MmSBdm9CWtAbv5aP7gsU6QF3vnxNxR52DKpkh2WskV+TVyiyzFtsHvXWJKLdrb
+         pUy2sl9wmtBf+9Wk6ZMQnX0G7qc5J+zB/2m7JlPZOQU2mo1zlOoTPHqmsuunSJeMOtXK
+         2pau6cBXtvCUvsR273XKCPBSXsBVPH6sKHqDQfIQiDJI3QHLQ+vNrw+Lm+XzDY02sMgj
+         4vB05H2zzZDYz+TcmjaGhrQkIYNA1nVsiAaEQFSymGIe4oytw7Tenw2Zal7bU2TsAsn1
+         5y1A==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@deezer.com header.s=smtpapi header.b=J5P3p3zQ;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=KQa5HVFU;
+       spf=pass (google.com: domain of bounces+1329729-784c-benitou97=gmail.com@listen.deezer.com designates 167.89.16.44 as permitted sender) smtp.mailfrom="bounces+1329729-784c-benitou97=gmail.com@listen.deezer.com";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=deezer.com
+Return-Path: <bounces+1329729-784c-benitou97=gmail.com@listen.deezer.com>
+Received: from o7.listen.deezer.com (o7.listen.deezer.com. [167.89.16.44])
+        by mx.google.com with ESMTPS id v65-20020a254844000000b0061da917cd23si1291474yba.35.2022.03.03.03.23.43
+        for <benitou97@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 03 Mar 2022 03:23:44 -0800 (PST)
+Received-SPF: pass (google.com: domain of bounces+1329729-784c-benitou97=gmail.com@listen.deezer.com designates 167.89.16.44 as permitted sender) client-ip=167.89.16.44;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@deezer.com header.s=smtpapi header.b=J5P3p3zQ;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=KQa5HVFU;
+       spf=pass (google.com: domain of bounces+1329729-784c-benitou97=gmail.com@listen.deezer.com designates 167.89.16.44 as permitted sender) smtp.mailfrom="bounces+1329729-784c-benitou97=gmail.com@listen.deezer.com";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=deezer.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=deezer.com;
+	h=content-transfer-encoding:content-type:from:mime-version:subject:
+	reply-to:x-feedback-id:to;
+	s=smtpapi; bh=xmvaV3WaB5idHZRVfsJYcNGKFF0F/N4N2ixvJ3hd4sA=;
+	b=J5P3p3zQ96F6gUBvc6O6g4pwFgE71JmCrs4mizQLcGqJsh5mRcrKbj5E6z1TKpuItXB/
+	MDUSwuOHMIETug1UlVUTJmCAEVPAmbduBiCmXjHthn/rBRRDiZ0P0Xif40S6BmpJitH6xI
+	GQK0pyqjA4LG0eYmbY09ZuoWxXql/HHA0=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.info;
+	h=content-transfer-encoding:content-type:from:mime-version:subject:
+	reply-to:x-feedback-id:to;
+	s=smtpapi; bh=xmvaV3WaB5idHZRVfsJYcNGKFF0F/N4N2ixvJ3hd4sA=;
+	b=KQa5HVFUu7W1F1rexzj1V+XOIKw+42aDzF4MLXxAU/XvJ5ARQKOitfi/42wIhi3qRLHv
+	GuUBsMjFJcZIqL7zZAWWNgEYHKSr6jd3pABaIY6/J6hL7brnf5LXduQO2xBW6e6GIqONvN
+	6ZQL/aXZ3edCn5BalUPAvMsSIkWvMwezU=
+Received: by filterdrecv-7485957b4c-rjzxn with SMTP id filterdrecv-7485957b4c-rjzxn-1-6220A53F-38
+        2022-03-03 11:23:43.513779426 +0000 UTC m=+14729174.013635785
+Received: from MTMyOTcyOQ (unknown)
+	by geopod-ismtpd-6-2 (SG) with HTTP
+	id FRPP6rcVTk6cRIG8EPJhlQ
+	Thu, 03 Mar 2022 11:23:43.343 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=utf-8
+Date: Thu, 03 Mar 2022 11:23:43 +0000 (UTC)
+From: Deezer <listen@deezer.com>
+Mime-Version: 1.0
+Message-ID: <FRPP6rcVTk6cRIG8EPJhlQ@geopod-ismtpd-6-2>
+Subject: Votre mois en musique =?UTF-8?B?8J+Otg==?=
+Reply-To: no-reply@deezer.com
+X-Feedback-ID: 1329729:SG
+X-SG-EID: 
+ =?us-ascii?Q?V8MHNg81F7Rda4LtJKoGwu+QFfC8NftsojlkR63wVryitLDaqmPq7AgNPn9B3n?=
+ =?us-ascii?Q?1MDBmixHEgGag4+Ciw8l46AigLGULs2piC3JqXx?=
+ =?us-ascii?Q?17AeQyH+bJJY50XBcpUQnQ9pLGFpZoEAgLktrna?=
+ =?us-ascii?Q?FPLAXk47dE7D9+A4uuU0uqqtmSPg4fXci6ioa52?=
+ =?us-ascii?Q?vBjBU+wOvogiGEd9lw12KzLD=2F2yHKVBrQ2awlX=2F?=
+ =?us-ascii?Q?E3WFvo0TScihcPGnQ=3D?=
+X-SG-ID: 
+ =?us-ascii?Q?N2C25iY2uzGMFz6rgvQsbx2DYtFqv3SmdwQSNMMt4rV4KD2TNyrdzOFsQy0b4h?=
+ =?us-ascii?Q?4PKhsck73AiHlrlYbqYmzvllO2w3k0xKzjyPJil?=
+ =?us-ascii?Q?XZIslSaKAsyqGtw6LZ9GePTF6H6xmwvhCxohJ7Y?=
+ =?us-ascii?Q?zp2=2FwkzOp=2FFHCfZH0HsXM6vHXt4x3E7gkevw9wz?=
+ =?us-ascii?Q?fHyhSNsnRVHDTKAc13pIAx9IRraSsjjcB9E1KwE?=
+ =?us-ascii?Q?=2FRwUU5r22db6umvhxbQSizGRwSJyKTHGGAI8t8A?=
+ =?us-ascii?Q?9gDJ893y7JJjcZJtiD6XlCOdPT9v7=2F=2FIIoF0IQ8?=
+ =?us-ascii?Q?kKsTn6VDLKX4UXn3nv=2FZvLxlfUn05ec8FgOVJCI?=
+ =?us-ascii?Q?eLyqzYfQ5RcvnW8GGmEXFLBu2n+D+tJZ5AB3RYe?=
+ =?us-ascii?Q?SYa7fE=2FXtBH61dEXw=2FDNyXUadZkepo=2Fxv2AgotP?=
+ =?us-ascii?Q?LXJszk50jGnDaI=3D?=
+To: benitou97@gmail.com
+X-Entity-ID: yIxmes7IxBNBTTIVAWZ5Hw==
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www=
+.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns=3D"https://www.w3.org/1999/xhtml">
+	<head>
+		<title>Deezer</title>
+		<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8" =
+/>
+		<meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge" />
+		<meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=3D=
+1.0 " />
+		<meta name=3D"format-detection" content=3D"telephone=3Dno" />
+		<meta name=3D"format-detection" content=3D"date=3Dno" />
+		<meta name=3D"format-detection" content=3D"address=3Dno" />
+		<meta name=3D"format-detection" content=3D"email=3Dno" />
+		<link href=3D"https://fonts.googleapis.com/css2?family=3DRoboto:wght@400;=
+500;700&display=3Dswap" rel=3D"stylesheet">
+		<style type=3D"text/css">
+		.color {background-color: #121216}
+		.bgcolor {background-color: #000000}
+		.container {width: 480px; background-color: #121216; -webkit-touch-callou=
+t: none; -webkit-user-select: none; user-select: none}
+		td, a, p {color: #FFFFFF !important}
+		.dark-color-white {background-color: #FFFFFF !important; color: #000000 !=
+important;}
+		@media only screen and (max-width: 800px) {
+			.container {width: 375px !important}
+			.celltrack {width: 251px}
+			.image {width: 375px !important; height: 150px !important}
+			.mockup {width: 375px !important; height: auto !important}
+			.bar {width: 375px !important; height: 6px !important}
+		}
+		</style>
+	</head>
+
+	<!--Hidden preview-->
+	<body class=3D"color" style=3D"margin:0px; padding:0px">
+        <div style=3D"display: none; max-height: 0px; overflow: hidden;">
+            D=C3=A9couvrez les titres que vous =C3=A9coutez le plus
+        </div>
+        <div style=3D"display: none; max-height: 0px; overflow: hidden;">  =
+   &nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;=
+&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nb=
+sp;&zwnj;&nbsp;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;=
+&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nb=
+sp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;=
+&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zw=
+nj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;=
+&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nb=
+sp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;=
+&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zw=
+nj;&nbsp;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;=
+&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zw=
+nj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;=
+&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nb=
+sp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;=
+&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zw=
+nj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;=
+&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nb=
+sp;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;=
+&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nb=
+sp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;=
+&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zw=
+nj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;=
+&nbsp;
+        </div>
+    <!--//Hidden preview-->
+
+	<!--Emailing-->
+	<table class=3D"bgcolor" valign=3D"top" width=3D"100%" cellspacing=3D"0" c=
+ellpadding=3D"0" border=3D"0" align=3D"center">
+	<tbody>
+		<tr>
+			<td valign=3D"top" align=3D"center">
+
+				<!--Emailing Container-->
+				<table class=3D"container" cellspacing=3D"0" cellpadding=3D"0" border=
+=3D"0" align=3D"center">
+				<tbody>
+
+					<!--Section Header-->
+					<tr>
+						<td style=3D"padding: 32px 32px 16px" align=3D"center">
+							<a href=3D"http://listen.deezer.com/ls/click?upn=3DCcgUPIQpG4DeMGx88=
+BRHYcah7pWUw7d1gK2CT1A4zlU7FIlwhLZsXlQsp68jUB9bnuaOWwt-2FbrmJV8JcdPeTmnYJ9-=
+2FteSrRPscEr2ynfOWjw-2FJajsYaDEo0WXTSqya0CXke5tUAj1xpwYMY8lrRlPQI3MvKrHsgul=
+jSwnAFnEWY-3DQplF_sY8iD45ISxUmXhR3ab0HQRFLkQ0VsF1vzQb9dPuHNccEtH7CTwAhFhx-2=
+BT-2BsxNapd-2FJiiCMOh2oaARNsWmwqsCHCkAQuCkL8dAsRXExNopM4dX3F-2Fdn2vos6E-2Bb=
+Ad6tSFeFNHoracHyvHFTGdMMh-2B8U2vaWxTG5Hb3JAUJXod0LX4-2Fs2XLcm0QSCnPp95wzvF-=
+2BzTXp9wURfs-2Fan5Xn3IyGOP0Zn-2FpRWRBJCwqi7BPdn2iDkbN3phszUp6j1bv-2FE39-2B-=
+2Fg-2F7bRl0h7kweyDVX3F9cQNfB8H8lmVByG9Xhyq6KgdLv4BaLw8VjWW-2Fwt1hLkp6Rx-2Fr=
+r4hc5W493JjPAgaiIwCk6BTTjdTXQYHKKoeq4bCl879qeW9H6bN-2FymXTVd6ec1kVXRKZAbYLu=
+RO21V1FVycHkozVZPGWVfBD85ryEEoMk0AyE7Hdd-2FTY95eMHmcfgDOYjiH8cXg7kYSZQAbgS6=
+2jLNboyHC2x0xAZYEovTnj-2BsLjRZS5EPvVGJ-2B0m5KamWorVsIwheg2N4uZW-2FXw8UzoGNf=
+eB2Ntk7S7y438Kjme9Xkw0lSFTq-2BDgFEffAqXe2-2FJ-2F7zPH9OEkjO1Hvl-2FRXwq8WX9ml=
+1KCJk1JVX0NA-3D">
+								<img src=3D"https://cdns-content.dzcdn.net/campaigner/template-base=
+/logo.png" border=3D"0" width=3D"29" height=3D"19">
+							</a>
+						</td>
+					</tr>
+					<tr>
+						<td style=3D"padding: 16px 32px; font-family: 'Roboto', Geneva, sans-=
+serif; font-size: 24px; line-height: 28px; color: #191919; font-weight: 700=
+" align=3D"center">
+							Votre mois en musique
+						</td>
+					</tr>
+                    <tr>
+						<td style=3D"padding: 16px 32px; font-family: 'Roboto', Geneva, sans-=
+serif; font-size: 24px; line-height: 28px; color: #191919; font-weight: 700=
+" align=3D"center">
+							Mois=C2=A0: f=C3=A9vrier
+						</td>
+					</tr>
+
+					<!--//Section Header-->
+
+
+					<!--Section Data-->
+					<tr>
+						<td style=3D"padding:16px 32px" align=3D"center">
+                          <p style=3D"font-family:'Roboto', Geneva, sans-se=
+rif; font-size: 24px; line-height: 24px; color: #191919; margin: 0">Titres =
+:</p>
+							<p style=3D"color: #191919; display: inline-block; font-family: 'Ope=
+n Sans', Geneva, sans-serif; font-size: 70px; font-weight: 700; line-height=
+: 84px; margin: 0px">314</p>
+						=09
+						</td>
+					</tr>
+                    <tr>
+						<td style=3D"padding:16px 32px" align=3D"center">
+                          <p style=3D"font-family:'Roboto', Geneva, sans-se=
+rif; font-size: 24px; line-height: 24px; color: #191919; margin: 0">Nombre =
+de minutes :</p>
+							<p style=3D"color: #191919; display: inline-block; font-family: 'Ope=
+n Sans', Geneva, sans-serif; font-size: 70px; font-weight: 700; line-height=
+: 84px; margin: 0px">984</p>
+						=09
+						</td>
+					</tr>
+                     <tr>
+						<td style=3D"padding:16px 32px" align=3D"center">
+                          <p style=3D"font-family:'Roboto', Geneva, sans-se=
+rif; font-size: 24px; line-height: 24px; color: #191919; margin: 0">Nombre =
+moyen de titres par jour :</p>
+							<p style=3D"color: #191919; display: inline-block; font-family: 'Ope=
+n Sans', Geneva, sans-serif; font-size: 70px; font-weight: 700; line-height=
+: 84px; margin: 0px">12</p>
+						=09
+						</td>
+					</tr>
+					<!--//Section Data-->
+                   =20
+                    <!--TOP ARTIST-->
+                  <tr>
+						<td style=3D"padding:0 32px 16px; font-family:'Roboto', Geneva, sans-=
+serif; font-size: 16px; line-height: 19px; color: #72727D" align=3D"center"=
+>
+							Votre artiste pr=C3=A9f=C3=A9r=C3=A9 :
+						</td>
+					</tr>
+					<tr>
+						<td style=3D"padding:16px 0" align=3D"center">
+							<a href=3D"http://listen.deezer.com/ls/click?upn=3DwBe8FSl3cq3MBMO20=
+SwwEcJYrt0w76R7VMXkOM9j7ynpNb3RVfj8-2FnVv6vRrSnSSWf8YpV7Z6rbgcc3DFVcAIp7qCd=
+a5Z2CqmwagQB4iQkURaVaatgjaOpvEuXIoYmf5iazS1ZoFEci9wbKjYR-2FWYUZvYCzwsSL9pvR=
+HY1hdha-2B6MkrF8S5c-2F7JoA18-2Bu1jB649LhU8S-2FEiHm5cQpU-2BrBA-3D-3DTYbj_sY8=
+iD45ISxUmXhR3ab0HQRFLkQ0VsF1vzQb9dPuHNccEtH7CTwAhFhx-2BT-2BsxNapd-2FJiiCMOh=
+2oaARNsWmwqsCHCkAQuCkL8dAsRXExNopM4dX3F-2Fdn2vos6E-2BbAd6tSFeFNHoracHyvHFTG=
+dMMh-2B8U2vaWxTG5Hb3JAUJXod0LX4-2Fs2XLcm0QSCnPp95wzvF-2BzTXp9wURfs-2Fan5Xn3=
+IyGOP0Zn-2FpRWRBJCwqi7BPdn2iDkbN3phszUp6j1bv-2FE39-2B-2Fg-2F7bRl0h7kweyDVX3=
+F9cQNfB8H8lmVByG9Xhyq6KgdLv4BaLw8VjWW-2Fwt1hLkp6Rx-2Frr4hc5W493JjPAgaiIwCk6=
+BTTjdTXQYHKKoeq4bCl879qeW9H6bN-2FymXTVd6ec1kVXRKZAbYLuRO21V1Fc6dEWEnW2RGeyY=
+mxJHRbo2SVMLVCz3iU6j434gpZtHcMJ0qj5K7A8prTkfaK59i3Tmr0Ngdjppzi5eg0EgH8J8N1l=
+Mu-2F9KKQxTiHmAqZMsEcWISp3fNvTbgQzNTBOXAOXdzGxZ050BEUZae3ktuO4o-2F6p7GXpzgk=
+0w1tRlR90AolTLw3-2FHSwIZ-2BWD2REZVEoaWKVPrXTHEe1GiLx6lyqJ0-3D" target=3D"_b=
+lank" style=3D"text-decoration: none">
+								<img style=3D"display:block; border-radius: 100%" src=3D"https://e-=
+cdns-images.dzcdn.net/images/artist/b46a9342d1c66af7573f7ee787421b2f/264x26=
+4-000000-80-0-0.jpg" width=3D"264" border=3D"0" height=3D"264">
+							</a>
+						</td>
+					</tr>
+					<tr>
+						<td style=3D"padding:0 32px 16px" align=3D"center">
+							<a href=3D"http://listen.deezer.com/ls/click?upn=3DwBe8FSl3cq3MBMO20=
+SwwEcJYrt0w76R7VMXkOM9j7ynpNb3RVfj8-2FnVv6vRrSnSSWf8YpV7Z6rbgcc3DFVcAIp7qCd=
+a5Z2CqmwagQB4iQkURaVaatgjaOpvEuXIoYmf5iazS1ZoFEci9wbKjYR-2FWYUZvYCzwsSL9pvR=
+HY1hdha-2B6MkrF8S5c-2F7JoA18-2Bu1jB649LhU8S-2FEiHm5cQpU-2BrBA-3D-3DnQRe_sY8=
+iD45ISxUmXhR3ab0HQRFLkQ0VsF1vzQb9dPuHNccEtH7CTwAhFhx-2BT-2BsxNapd-2FJiiCMOh=
+2oaARNsWmwqsCHCkAQuCkL8dAsRXExNopM4dX3F-2Fdn2vos6E-2BbAd6tSFeFNHoracHyvHFTG=
+dMMh-2B8U2vaWxTG5Hb3JAUJXod0LX4-2Fs2XLcm0QSCnPp95wzvF-2BzTXp9wURfs-2Fan5Xn3=
+IyGOP0Zn-2FpRWRBJCwqi7BPdn2iDkbN3phszUp6j1bv-2FE39-2B-2Fg-2F7bRl0h7kweyDVX3=
+F9cQNfB8H8lmVByG9Xhyq6KgdLv4BaLw8VjWW-2Fwt1hLkp6Rx-2Frr4hc5W493JjPAgaiIwCk6=
+BTTjdTXQYHKKoeq4bCl879qeW9H6bN-2FymXTVd6ec1kVXRKZAbYLuRO21V1FXdeqBvwxHZ2U1-=
+2FWXTYWO25LRf2w7ZEqaHiIg7sC1ge3s-2BdaNB9o48G5CJqehJPgR8ydOjxVlAInu5XYBjHDmw=
+N2uM1OU0-2FbTLpiMZO939yxE-2BfHIeWfbvyBuCF0O82-2BuLwgjiP8W6nCmjVe-2Bu8IfxYjJ=
+ASwJd6v1sFPumtrH39DEwDHawmHUGEfqRvUCH-2Fn8wNNQQ6IJvD05ubb8iSzJC8-3D" target=
+=3D"_blank"  style=3D"font-family:'Roboto', Geneva, sans-serif; font-size: =
+20px; line-height: 23px; font-weight: 500; color: #000000">Howard Shore
+							=09
+							</a>
+						</td>
+					</tr>
+				=09
+					<tr>
+						<td style=3D"padding:0 32px 16px" align=3D"center">
+							<!--[if mso]>
+							<v:roundrect xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:w=3D"ur=
+n:schemas-microsoft-com:office:word" href=3D"http://www.deezer.com/universa=
+l-link/artist/556?utm_campaign=3Demail-monthly-digest&utm_content=3Dtop-art=
+ist&utm_medium=3Dobj_stream&utm_source=3Dcrm" style=3D"height:40px;v-text-a=
+nchor:middle;width:220pxpx;" arcsize=3D"50%" strokecolor=3D"#EF5466" fillco=
+lor=3D"#EF5466">
+							<w:anchorlock/>
+							<center style=3D"color:#ffffff;font-family:Geneva,sans-serif;font-si=
+ze:14px;font-weight:bold;">&#9654;&#xFE0E;&nbsp;&nbsp;&nbsp;=C3=89couter</c=
+enter>
+							</v:roundrect>
+							<![endif]-->
+							<a  href=3D"http://listen.deezer.com/ls/click?upn=3DwBe8FSl3cq3MBMO2=
+0SwwEcJYrt0w76R7VMXkOM9j7ynpNb3RVfj8-2FnVv6vRrSnSSWf8YpV7Z6rbgcc3DFVcAIp7qC=
+da5Z2CqmwagQB4iQkURaVaatgjaOpvEuXIoYmf5iazS1ZoFEci9wbKjYR-2FWYUZvYCzwsSL9pv=
+RHY1hdha-2B6MkrF8S5c-2F7JoA18-2Bu1jB649LhU8S-2FEiHm5cQpU-2BrBA-3D-3Dq2KR_sY=
+8iD45ISxUmXhR3ab0HQRFLkQ0VsF1vzQb9dPuHNccEtH7CTwAhFhx-2BT-2BsxNapd-2FJiiCMO=
+h2oaARNsWmwqsCHCkAQuCkL8dAsRXExNopM4dX3F-2Fdn2vos6E-2BbAd6tSFeFNHoracHyvHFT=
+GdMMh-2B8U2vaWxTG5Hb3JAUJXod0LX4-2Fs2XLcm0QSCnPp95wzvF-2BzTXp9wURfs-2Fan5Xn=
+3IyGOP0Zn-2FpRWRBJCwqi7BPdn2iDkbN3phszUp6j1bv-2FE39-2B-2Fg-2F7bRl0h7kweyDVX=
+3F9cQNfB8H8lmVByG9Xhyq6KgdLv4BaLw8VjWW-2Fwt1hLkp6Rx-2Frr4hc5W493JjPAgaiIwCk=
+6BTTjdTXQYHKKoeq4bCl879qeW9H6bN-2FymXTVd6ec1kVXRKZAbYLuRO21V1FWhUfCjvbjt1VF=
+YY9ViQcQp0o-2FaGhG1b9Bdl1zncMTCP22K9ATs5uDfWRIJcYe6X3g9JVfLE6eWN0Jj0FRoV9ea=
+DfJLinlc-2FO7zAd1jBjhi21uyW-2BUyCX89euZpsMMB-2BJHEKy9ild1UsNsLgUUpxFvYoqVR1=
+jHovPsivctsbx1ZZbfrcdIVfYj66gpq8sfjBf30zsGCS-2FreY2E-2BYGRiYiiY-3D" style=
+=3D"background-color: #EF5466; border-radius: 100px; color: #ffffff; displa=
+y: inline-block; font-family: 'Open Sans', Geneva, sans-serif; font-size: 1=
+4px; line-height: 17px; text-align:center; text-decoration: none; -webkit-t=
+ext-size-adjust: none; mso-hide: all; -webkit-font-smoothing: antialiased; =
+-moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; fon=
+t-weight: 700; margin:0px; padding: 18px 32px 18px 23px">
+								<img src=3D"https://cdns-content.dzcdn.net/campaigner/play-button-a=
+rrowhead-line-2.png" style=3D"display:inline;height:13px;-ms-interpolation-=
+mode:bicubic;border:none;outline:none;border-collapse:collapse;border-style=
+:none; padding-right: 10px" height=3D"13" border=3D"0">=C3=89couter
+							</a>
+						</td>
+					</tr>
+					<!--//TOP ARTIST-->
+                  <!--TOP TRACK-->
+					<tr>
+						<td style=3D"padding: 32px 32px 16px; font-family: 'Roboto', Geneva, =
+sans-serif; font-size: 20px; line-height: 23px; color: #191919; font-weight=
+: 700" align=3D"center">
+							Votre titre pr=C3=A9f=C3=A9r=C3=A9 :
+						</td>
+					</tr>
+					<tr>
+						<td style=3D"padding:0 32px 16px;font-family:'Roboto', Geneva, sans-s=
+erif; font-size: 40px; line-height: 43px; font-weight: 500; color: #000000"=
+ align=3D"center">
+						=09
+								Sandstorm
+			=09
+						</td>
+					</tr>
+					<tr>
+						<td style=3D"padding:0 32px 16px; font-family:'Roboto', Geneva, sans-=
+serif; font-size: 16px; line-height: 19px; color: #72727D" align=3D"center"=
+>
+						=09
+								Darude
+						=09
+						</td>
+					</tr>
+                  <tr>
+						<td style=3D"padding:32px 32px 16px" align=3D"center">
+							<!--[if mso]>
+							<v:roundrect xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:w=3D"ur=
+n:schemas-microsoft-com:office:word" href=3D"http://www.deezer.com/universa=
+l-link/track/11390027?utm_campaign=3Demail-monthly-digest&utm_content=3Dpla=
+ylist-&utm_medium=3Dobj_stream&utm_source=3Dcrm" style=3D"height:40px;v-tex=
+t-anchor:middle;width:220pxpx;" arcsize=3D"50%" strokecolor=3D"#EF5466" fil=
+lcolor=3D"#EF5466">
+							<w:anchorlock/>
+							<center style=3D"color:#ffffff;font-family:Geneva,sans-serif;font-si=
+ze:14px;font-weight:bold;">&#9654;&#xFE0E;&nbsp;&nbsp;&nbsp;R=C3=A9=C3=A9co=
+uter</center>
+							</v:roundrect>
+							<![endif]-->
+							<a href=3D"http://listen.deezer.com/ls/click?upn=3DwBe8FSl3cq3MBMO20=
+SwwEcJYrt0w76R7VMXkOM9j7yklwhbcj6v1HyhZH-2FqthebgvEIs4JcR81Ll3y4DDJ-2BRgsex=
+zZ17bptAJfwRjvcBgylfI-2FMcAqVq3hlUxZ7-2FkLN1YlYL0risHv-2Bw5Maeg28-2B6OdMT53=
+lj00lNUY-2FOjsXUVkB4v5lCBTLHBTm8STLfrKGPd-2Fh4VvlIJPnA1ybzNamjg-3D-3DgMsm_s=
+Y8iD45ISxUmXhR3ab0HQRFLkQ0VsF1vzQb9dPuHNccEtH7CTwAhFhx-2BT-2BsxNapd-2FJiiCM=
+Oh2oaARNsWmwqsCHCkAQuCkL8dAsRXExNopM4dX3F-2Fdn2vos6E-2BbAd6tSFeFNHoracHyvHF=
+TGdMMh-2B8U2vaWxTG5Hb3JAUJXod0LX4-2Fs2XLcm0QSCnPp95wzvF-2BzTXp9wURfs-2Fan5X=
+n3IyGOP0Zn-2FpRWRBJCwqi7BPdn2iDkbN3phszUp6j1bv-2FE39-2B-2Fg-2F7bRl0h7kweyDV=
+X3F9cQNfB8H8lmVByG9Xhyq6KgdLv4BaLw8VjWW-2Fwt1hLkp6Rx-2Frr4hc5W493JjPAgaiIwC=
+k6BTTjdTXQYHKKoeq4bCl879qeW9H6bN-2FymXTVd6ec1kVXRKZAbYLuRO21V1FYTXrb9nrQ3Hx=
+RBj8059TKRAxTEOI1Vlzi6StiiDuGylX4668Hw9JvC9wLgmK1te-2BmHh3q9SCzZ-2FDC0ZaZPD=
+aupg2ud0-2FGeGRTSrU7eKOeacWRBFnM16mXM9oUuL-2FJ5acnpHPiufTHdo5MfpxNbYbotYtVp=
+WAthnw8vnOQCjvb1ni5iHPo8BIT2gPXipP1AWTzTRmnYmYUyT-2BCBzhR0i5NI-3D" style=3D=
+"background-color: #EF5466; border-radius: 100px; color: #ffffff; display: =
+inline-block; font-family: 'Open Sans', Geneva, sans-serif; font-size: 14px=
+; line-height: 17px; text-align:center; text-decoration: none; -webkit-text=
+-size-adjust: none; mso-hide: all; -webkit-font-smoothing: antialiased; -mo=
+z-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; font-w=
+eight: 700; margin:0px; padding: 18px 32px 18px 23px">
+								<img src=3D"https://cdns-content.dzcdn.net/campaigner/play-button-a=
+rrowhead-line-2.png" style=3D"display:inline;height:13px;-ms-interpolation-=
+mode:bicubic;border:none;outline:none;border-collapse:collapse;border-style=
+:none; padding-right: 10px" height=3D"13" border=3D"0">R=C3=A9=C3=A9couter
+							</a>
+						</td>
+					</tr>
+				=09
+                  <!--//TOP TRACK-->
+                    <!--2/3 TRACK-->
+					<tr>
+						<td style=3D"padding: 32px 32px 16px; font-family: 'Roboto', Geneva, =
+sans-serif; font-size: 20px; line-height: 23px; color: #191919; font-weight=
+: 700" align=3D"center">
+							Vos autres titres pr=C3=A9f=C3=A9r=C3=A9s :
+						</td>
+					</tr>
+                    =20
+                                                 =20
+                                               =20
+					<tr>
+						<td style=3D"padding:0 32px 16px;font-family:'Roboto', Geneva, sans-s=
+erif; font-size: 40px; line-height: 43px; font-weight: 500; color: #000000"=
+ align=3D"center">
+						=09
+								Take Me Out
+			=09
+						</td>
+					</tr>
+					<tr>
+						<td style=3D"padding:0 32px 16px; font-family:'Roboto', Geneva, sans-=
+serif; font-size: 16px; line-height: 19px; color: #72727D" align=3D"center"=
+>
+						=09
+								Franz Ferdinand  =20
+                                               =20
+					<tr>
+						<td style=3D"padding:0 32px 16px;font-family:'Roboto', Geneva, sans-s=
+erif; font-size: 40px; line-height: 43px; font-weight: 500; color: #000000"=
+ align=3D"center">
+						=09
+								Du hast
+			=09
+						</td>
+					</tr>
+					<tr>
+						<td style=3D"padding:0 32px 16px; font-family:'Roboto', Geneva, sans-=
+serif; font-size: 16px; line-height: 19px; color: #72727D" align=3D"center"=
+>
+						=09
+								Rammstein =20
+						=09
+						</td>
+					</tr>
+				=09
+                  <!--//2/3 TRACK-->
+                 =20
+                  <!--TOP GENRE-->
+                    <tr>
+						<td style=3D"padding: 32px 32px 0; font-family: 'Roboto', Geneva, san=
+s-serif; font-size: 20px; line-height: 23px; color: #191919; font-weight: 7=
+00" align=3D"center">
+							Votre genre pr=C3=A9f=C3=A9r=C3=A9=C2=A0:
+						</td>
+					</tr>
+                    <tr>
+						<td style=3D"padding:16px 32px" align=3D"center">
+							<p style=3D"color: #191919; display: inline-block; font-family: 'Ope=
+n Sans', Geneva, sans-serif; font-size: 40px; font-weight: 700; line-height=
+: 43px; margin: 0px">Films/Jeux vid=C3=A9o</p>
+						</td>
+					</tr>
+					<!--//TOP GENRE-->
+                   =20
+                   =20
+                =20
+                        <!--IF NO PLAYLIST -->
+                 =20
+                                    <tr>
+						<td style=3D"padding:16px 32px" align=3D"center">
+                          <p style=3D"font-family:'Roboto', Geneva, sans-se=
+rif; font-size: 24px; line-height: 24px; color: #191919; margin: 0">Nombre =
+de playlists cr=C3=A9=C3=A9es :</p>=20
+							<p style=3D"color: #191919; display: inline-block; font-family: 'Ope=
+n Sans', Geneva, sans-serif; font-size: 70px; font-weight: 700; line-height=
+: 84px; margin: 0px">0</p>
+							<p style=3D"font-family:'Roboto', Geneva, sans-serif; font-size: 24p=
+x; line-height: 24px; color: #191919; margin: 0">Besoin d'aide pour commenc=
+er=C2=A0?</p>        =20
+						</td>
+					</tr>
+                    <tr>
+						<td style=3D"padding:16px 32px" align=3D"center">
+							<!--[if mso]>
+							<v:roundrect xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:w=3D"ur=
+n:schemas-microsoft-com:office:word" href=3D"http://www.deezer.com/universa=
+l-link/profile/me/playlists?utm_campaign=3Demail-monthly-digest&utm_content=
+=3Dprofile-me-playlists&utm_medium=3Dobj_stream&utm_source=3Dcrm" style=3D"=
+height:40px;v-text-anchor:middle;width:220pxpx;" arcsize=3D"50%" strokecolo=
+r=3D"#EF5466" fillcolor=3D"#EF5466">
+							<w:anchorlock/>
+							<center style=3D"color:#ffffff;font-family:Geneva,sans-serif;font-si=
+ze:14px;font-weight:bold;">Cr=C3=A9er ma playlist</center>
+							</v:roundrect>
+							<![endif]-->
+							<a href=3D"http://listen.deezer.com/ls/click?upn=3DwBe8FSl3cq3MBMO20=
+SwwEcJYrt0w76R7VMXkOM9j7yknzVo16nq0x5f-2Fo9GdM7kYGVjz1ePcdfq80khfCsna8YGkXo=
+TImBKI6vMdWyGGKSUSVH6Slh8J99EVYd44DHJV60v2hhOxtTHuArMZ3jrKVCtGWH3x80u4jb65d=
+hminmPixTnI0HRY43MOr2O1uDrZnv8xwtdrmVP1mASrJixRTZawh4QdU1v-2Ftrfhrwc9Oys-3D=
+IjTD_sY8iD45ISxUmXhR3ab0HQRFLkQ0VsF1vzQb9dPuHNccEtH7CTwAhFhx-2BT-2BsxNapd-2=
+FJiiCMOh2oaARNsWmwqsCHCkAQuCkL8dAsRXExNopM4dX3F-2Fdn2vos6E-2BbAd6tSFeFNHora=
+cHyvHFTGdMMh-2B8U2vaWxTG5Hb3JAUJXod0LX4-2Fs2XLcm0QSCnPp95wzvF-2BzTXp9wURfs-=
+2Fan5Xn3IyGOP0Zn-2FpRWRBJCwqi7BPdn2iDkbN3phszUp6j1bv-2FE39-2B-2Fg-2F7bRl0h7=
+kweyDVX3F9cQNfB8H8lmVByG9Xhyq6KgdLv4BaLw8VjWW-2Fwt1hLkp6Rx-2Frr4hc5W493JjPA=
+gaiIwCk6BTTjdTXQYHKKoeq4bCl879qeW9H6bN-2FymXTVd6ec1kVXRKZAbYLuRO21V1FeXujHa=
+q79JgnkkKVkpq6H-2FOAhbaOpsLGSEShYJV9b5NYy9rAu6B0QuvEiZHbHd-2BiB3zh2PXFKf9nI=
+BUbFW7pt7o0JXiSMAA9jlE51YT13oyQ5cTYI4dfv9nRPeHcABtK8Wt5ToNODsnlHWrpCAkk4P-2=
+FS345dDnXCrszrDIewMhMzSxe5jUCP8vNRA8A4S-2BWQPPdTu-2BUbVMe5HOiXGxwkBw-3D" st=
+yle=3D"background-color: #EF5466; border-radius: 100px; color: #FFFFFF; dis=
+play: inline-block; font-family: 'Open Sans', Geneva, sans-serif; font-size=
+: 14px; line-height: 17px; text-align:center; text-decoration: none; -webki=
+t-text-size-adjust: none; mso-hide: all; -webkit-font-smoothing: antialiase=
+d; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; =
+font-weight: 700; margin:0px; padding: 18px 32px">
+								Cr=C3=A9er ma playlist
+							</a>
+						</td>
+					</tr>
+                    <!--//IF NO PLAYLIST -->
+
+                  <!--IF 1 PLAYLIST -->
+                 =20
+                    <!--//IF 1+ PLAYLIST -->
+			=09
+					<!--//Playlists-->
+                     <!--Sharing -->
+                    <tr>
+						<td style=3D"padding:16px 0" align=3D"center">
+							<a target=3D"_blank" style=3D"text-decoration: none">
+								<img style=3D"display:block; border-radius: 100%" src=3D"https://cd=
+ns-content.dzcdn.net/campaigner/new-template-tests-2020/twitter-bird-blue.p=
+ng" width=3D"100" border=3D"0" height=3D"100">
+							</a>
+						</td>
+					</tr>
+                  <tr>
+						<td style=3D"padding:16px 32px" align=3D"center">
+							<p style=3D"font-family:'Roboto', Geneva, sans-serif; font-size: 24p=
+x; line-height: 24px; color: #191919; margin: 0">Partagez et comparez vos s=
+tats avec vos amis=C2=A0!</p>
+						</td>
+					</tr>
+					<tr>
+						<td style=3D"padding:16px 32px" align=3D"center">
+							<!--[if mso]>
+							<v:roundrect xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:w=3D"ur=
+n:schemas-microsoft-com:office:word" href=3D"https://twitter.com/intent/twe=
+et?text=3DJ%27ai%20=C3=A9cout=C3=A9%20314%20titres%20soit%2016%20heures%2C%=
+2024%20minutes%20&hashtags=3DMyDeezerMonth%20&via=3DDeezerFR" style=3D"heig=
+ht:40px;v-text-anchor:middle;width:220pxpx;" arcsize=3D"50%" strokecolor=3D=
+"#EF5466" fillcolor=3D"#EF5466">
+							<w:anchorlock/>
+							<center style=3D"color:#ffffff;font-family:Geneva,sans-serif;font-si=
+ze:14px;font-weight:bold;">Partager mes stats</center>
+							</v:roundrect>
+							<![endif]-->
+							<a href=3D"http://listen.deezer.com/ls/click?upn=3DCcgUPIQpG4DeMGx88=
+BRHYVFZMtUg9R-2BO5W69Bw70ys-2B6H9KCESO-2FdCpuIDaczoG7tdbPqk3sSFjuD2DyQa7vSl=
+fNdbgMyNbVKexKZvVDF45U8CoRSuV0UAMplFg82mS-2BtzyUz5Begp4DaBudRFzNsYnMEzhuT0u=
+G7bhL3Gq0ZCi4oBMhhP1Kxoz-2B7ZugCdlE89hu-2BSsQLFFkIIXXbxFj9A-3D-3DJEqi_sY8iD=
+45ISxUmXhR3ab0HQRFLkQ0VsF1vzQb9dPuHNccEtH7CTwAhFhx-2BT-2BsxNapd-2FJiiCMOh2o=
+aARNsWmwqsCHCkAQuCkL8dAsRXExNopM4dX3F-2Fdn2vos6E-2BbAd6tSFeFNHoracHyvHFTGdM=
+Mh-2B8U2vaWxTG5Hb3JAUJXod0LX4-2Fs2XLcm0QSCnPp95wzvF-2BzTXp9wURfs-2Fan5Xn3Iy=
+GOP0Zn-2FpRWRBJCwqi7BPdn2iDkbN3phszUp6j1bv-2FE39-2B-2Fg-2F7bRl0h7kweyDVX3F9=
+cQNfB8H8lmVByG9Xhyq6KgdLv4BaLw8VjWW-2Fwt1hLkp6Rx-2Frr4hc5W493JjPAgaiIwCk6BT=
+TjdTXQYHKKoeq4bCl879qeW9H6bN-2FymXTVd6ec1kVXRKZAbYLuRO21V1FT-2BeYOolX3GFBux=
+yg-2B4v3-2Bxzv3ckVhWHPwEGgksezQBaLfZ4eU5-2F4X2HAWaz2aW2jxGKw-2BzFvBZA6roVMU=
+t8n1TpRM-2Flmsi-2BuXwn2NsuKV9G9L-2Bse2gcUKbF7GYfMnORM3B5Muj5wZ4Pbty9wyDRv4Q=
+GO9IazBE2QlEbuiB4RO2hMxXc5qh6RMU8MwZVZ7Qun1ua6PFynkevTqa7vRvOTDQ-3D" style=
+=3D"background-color: #EF5466; border-radius: 100px; color: #FFFFFF; displa=
+y: inline-block; font-family: 'Open Sans', Geneva, sans-serif; font-size: 1=
+4px; line-height: 17px; text-align:center; text-decoration: none; -webkit-t=
+ext-size-adjust: none; mso-hide: all; -webkit-font-smoothing: antialiased; =
+-moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; fon=
+t-weight: 700; margin:0px; padding: 18px 32px">
+								Partager mes stats
+							</a>
+						</td>
+					</tr>
+					<!--//Sharing-->
+
+					<!--Section Bar-->
+					<tr>
+						<td style=3D"height: 6px; padding: 18px 0 0" height=3D"6">
+							<img class=3D"bar" src=3D"https://cdns-content.dzcdn.net/campaigner/=
+template-base/bar.png" width=3D"480" height=3D"6" style=3D"width: 480px; he=
+ight: 6px;" border=3D"0">
+						</td>
+					</tr>
+					<!--//Section Bar-->
+
+					<!--Social links-->
+					<tr class=3D"social">
+						<td style=3D"font-family: 'Roboto', Arial, sans-serif; font-size: 12p=
+x; line-height: 19px; color: #72727D; padding: 32px 0 0; font-weight: 700" =
+valign=3D"top" align=3D"center" class=3D"dark-color-lightgrey">
+							<a href=3D"http://listen.deezer.com/ls/click?upn=3DCcgUPIQpG4DeMGx88=
+BRHYWp-2FyK1oY3-2FnkajL5OB-2FP7aIBgCbbONW9malDpcC5Cpz2UCw_sY8iD45ISxUmXhR3a=
+b0HQRFLkQ0VsF1vzQb9dPuHNccEtH7CTwAhFhx-2BT-2BsxNapd-2FJiiCMOh2oaARNsWmwqsCH=
+CkAQuCkL8dAsRXExNopM4dX3F-2Fdn2vos6E-2BbAd6tSFeFNHoracHyvHFTGdMMh-2B8U2vaWx=
+TG5Hb3JAUJXod0LX4-2Fs2XLcm0QSCnPp95wzvF-2BzTXp9wURfs-2Fan5Xn3IyGOP0Zn-2FpRW=
+RBJCwqi7BPdn2iDkbN3phszUp6j1bv-2FE39-2B-2Fg-2F7bRl0h7kweyDVX3F9cQNfB8H8lmVB=
+yG9Xhyq6KgdLv4BaLw8VjWW-2Fwt1hLkp6Rx-2Frr4hc5W493JjPAgaiIwCk6BTTjdTXQYHKKoe=
+q4bCl879qeW9H6bN-2FymXTVd6ec1kVXRKZAbYLuRO21V1FblGhULRrtGA8-2FlcCSS36qjVyFG=
+PG7JWstgEfF6K2W-2FpUMJMB4liAanI1ZDUFVLI6hMOEItv-2FlpZJRKBqEKJ4z4wMkfBGRpR2d=
+gYupzH2-2Bsb1hY14a1TM3skdtApXiTJl-2FxgECpgFdZBGmDfpFxOoupMgEMpmJ5RqrG5Mhtth=
+ACfneVvKhm2E1uW8ckOCrqp-2BNHcQuk7UzHUQEy6QHp6nXk-3D" target=3D"_blank" styl=
+e=3D"color:#72727D; text-decoration:none" class=3D"dark-color-lightgrey">Fa=
+cebook</a>
+							|
+							<a href=3D"http://listen.deezer.com/ls/click?upn=3DCcgUPIQpG4DeMGx88=
+BRHYddyyH1Ahr-2FhZaD7XjRvc6iPsqVFU45b5aTHbAchv9tyqWeV_sY8iD45ISxUmXhR3ab0HQ=
+RFLkQ0VsF1vzQb9dPuHNccEtH7CTwAhFhx-2BT-2BsxNapd-2FJiiCMOh2oaARNsWmwqsCHCkAQ=
+uCkL8dAsRXExNopM4dX3F-2Fdn2vos6E-2BbAd6tSFeFNHoracHyvHFTGdMMh-2B8U2vaWxTG5H=
+b3JAUJXod0LX4-2Fs2XLcm0QSCnPp95wzvF-2BzTXp9wURfs-2Fan5Xn3IyGOP0Zn-2FpRWRBJC=
+wqi7BPdn2iDkbN3phszUp6j1bv-2FE39-2B-2Fg-2F7bRl0h7kweyDVX3F9cQNfB8H8lmVByG9X=
+hyq6KgdLv4BaLw8VjWW-2Fwt1hLkp6Rx-2Frr4hc5W493JjPAgaiIwCk6BTTjdTXQYHKKoeq4bC=
+l879qeW9H6bN-2FymXTVd6ec1kVXRKZAbYLuRO21V1FemR-2FsDOmXH0h3U4kNnsoV5c5aq8fxL=
+rJSTFfdvKa-2BHvHT3VX-2F3dqZLl-2B6e6pU67A0KvZ7i8Z-2BkJtx0YSILGtSfptY7Zu2OeR-=
+2BuVb4OknZ7op5vNZ9Mqo-2BfvGQXFm6H272XbSMcvk9mfExzWsM525ojNhsodjqzGFbJi1uy9M=
+X-2F84WKEVP6xswsW7Bwy2QwQl5wpTG7MvVwh1c-2BE5Y8NAig-3D" target=3D"_blank" st=
+yle=3D"color:#72727D; text-decoration:none" class=3D"dark-color-lightgrey">=
+Twitter</a>
+							|
+							<a href=3D"http://listen.deezer.com/ls/click?upn=3DCcgUPIQpG4DeMGx88=
+BRHYebjHe4wmZGzg4CBCLHoeVhS2v2C8XdLo-2FbDUIjvl-2BGKBLJG_sY8iD45ISxUmXhR3ab0=
+HQRFLkQ0VsF1vzQb9dPuHNccEtH7CTwAhFhx-2BT-2BsxNapd-2FJiiCMOh2oaARNsWmwqsCHCk=
+AQuCkL8dAsRXExNopM4dX3F-2Fdn2vos6E-2BbAd6tSFeFNHoracHyvHFTGdMMh-2B8U2vaWxTG=
+5Hb3JAUJXod0LX4-2Fs2XLcm0QSCnPp95wzvF-2BzTXp9wURfs-2Fan5Xn3IyGOP0Zn-2FpRWRB=
+JCwqi7BPdn2iDkbN3phszUp6j1bv-2FE39-2B-2Fg-2F7bRl0h7kweyDVX3F9cQNfB8H8lmVByG=
+9Xhyq6KgdLv4BaLw8VjWW-2Fwt1hLkp6Rx-2Frr4hc5W493JjPAgaiIwCk6BTTjdTXQYHKKoeq4=
+bCl879qeW9H6bN-2FymXTVd6ec1kVXRKZAbYLuRO21V1FW3L-2Ftm2YS4z5GocJ3S8D8olP4Y1N=
+xDV6TKZEAnVO61s3-2F09VMm7hpy5k-2BKtcth3XtPpAzYj9pCmBLKiHDiGhAMumSZUYOE8mAoC=
+ZnSnjcR5NI3tPXC2XES5b-2FwR-2FCmi482rQUegT-2B1Io-2BtUyUXjKW-2B2niisC-2BXVEFU=
+VBE0edrGXPb8aKCiRN8GYBDNFrQ-2BlJPPHLiwXWM8FaiwWlxIF7U8-3D" target=3D"_blank=
+" style=3D"color:#72727D; text-decoration:none" class=3D"dark-color-lightgr=
+ey">Instagram</a>
+							|
+							<a href=3D"http://listen.deezer.com/ls/click?upn=3DCcgUPIQpG4DeMGx88=
+BRHYevrEZVSSPKMfKhy5d8X6GSZ-2FMYxVvNezCjzoXh86ZL6SsqJ_sY8iD45ISxUmXhR3ab0HQ=
+RFLkQ0VsF1vzQb9dPuHNccEtH7CTwAhFhx-2BT-2BsxNapd-2FJiiCMOh2oaARNsWmwqsCHCkAQ=
+uCkL8dAsRXExNopM4dX3F-2Fdn2vos6E-2BbAd6tSFeFNHoracHyvHFTGdMMh-2B8U2vaWxTG5H=
+b3JAUJXod0LX4-2Fs2XLcm0QSCnPp95wzvF-2BzTXp9wURfs-2Fan5Xn3IyGOP0Zn-2FpRWRBJC=
+wqi7BPdn2iDkbN3phszUp6j1bv-2FE39-2B-2Fg-2F7bRl0h7kweyDVX3F9cQNfB8H8lmVByG9X=
+hyq6KgdLv4BaLw8VjWW-2Fwt1hLkp6Rx-2Frr4hc5W493JjPAgaiIwCk6BTTjdTXQYHKKoeq4bC=
+l879qeW9H6bN-2FymXTVd6ec1kVXRKZAbYLuRO21V1FXy306qZswt2L97Xf27070CtQjOf5Wgtm=
+3yETkUq-2F03XbrZmDlkPOWKgNyCSZk6AhK4piQ352p54CFOBav3go0uubLhTeVvMQrTc6f5VwM=
+B7GpxVYP5sc3C4EHPYXXGV12YazkiPG0t4IG-2B-2FQqF3zP5rxZFScucnODPAAVjCam07JzgAE=
+C-2FAVPAunfYSvrdZZclRXHccixdKCVFM5zP43jpNy4bWWM5oOZt9hbH9-2FXHD" target=3D"=
+_blank" style=3D"color:#72727D; text-decoration:none" class=3D"dark-color-l=
+ightgrey">Deezer Community</a>
+						</td>
+					</tr>
+					<!--//Social links-->
+
+					<!--Devices-->
+					<tr class=3D"devices">
+						<td style=3D"padding: 20px 16px 16px" align=3D"center">
+							<table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" align=3D"cen=
+ter">
+							<tbody>
+								<tr>
+									<td valign=3D"top" align=3D"center">
+										<a href=3D"http://listen.deezer.com/ls/click?upn=3DCcgUPIQpG4DeMG=
+x88BRHYYBx-2FBClFiV7GpWs-2BWjycC-2FIKaChYhM8Wqv8INYbOZWBqxJShHwrDYGVUzrqIYS=
+6GQ-3D-3DjjGw_sY8iD45ISxUmXhR3ab0HQRFLkQ0VsF1vzQb9dPuHNccEtH7CTwAhFhx-2BT-2=
+BsxNapd-2FJiiCMOh2oaARNsWmwqsCHCkAQuCkL8dAsRXExNopM4dX3F-2Fdn2vos6E-2BbAd6t=
+SFeFNHoracHyvHFTGdMMh-2B8U2vaWxTG5Hb3JAUJXod0LX4-2Fs2XLcm0QSCnPp95wzvF-2BzT=
+Xp9wURfs-2Fan5Xn3IyGOP0Zn-2FpRWRBJCwqi7BPdn2iDkbN3phszUp6j1bv-2FE39-2B-2Fg-=
+2F7bRl0h7kweyDVX3F9cQNfB8H8lmVByG9Xhyq6KgdLv4BaLw8VjWW-2Fwt1hLkp6Rx-2Frr4hc=
+5W493JjPAgaiIwCk6BTTjdTXQYHKKoeq4bCl879qeW9H6bN-2FymXTVd6ec1kVXRKZAbYLuRO21=
+V1FWTjVazFRJ9z90cgabLv1-2BOn1tzmXm0XREnZ9OeWzAudba2oCjuA6ZPLqx-2BYWgZL6WiaY=
+sDllxKO8TNdUWzMmug4MCvCrOfmB5lN-2BCadeYG45ktfSkE25TwaNdY9rJT-2FdtS9j2MbcCKo=
+fFTPHkhbU3bjMM-2BfBDxyz-2FAHInYNQ7IBBD9D8TAF1-2BQ7hxihCrM5ddtxS-2B087E8bqfE=
+6etUjJ1CW3-2BYpNA9w0PVs-2BGJqdfhC" target=3D"_blank" style=3D"text-decorati=
+on: none">
+											<img src=3D"https://cdns-content.dzcdn.net/campaigner/template-b=
+ase/ioslight.png" alt=3D"IOS" style=3D"display: block; max-width: 107px" wi=
+dth=3D"106" border=3D"0" height=3D"40">
+										</a>
+									</td>
+									<td style=3D"width: 32px" width=3D"32">&nbsp;</td>
+									<td valign=3D"top" align=3D"center">
+										<a href=3D"http://listen.deezer.com/ls/click?upn=3DCcgUPIQpG4DeMG=
+x88BRHYfRLBzj2Wes7Gq13zOoDoZhFce2OERhId6G-2F45ZV3sfqFcg-2B4Buym9kHY218-2B1w=
+AS7RysBlXk5GmBqDzWQ30BOg-3DKe-Q_sY8iD45ISxUmXhR3ab0HQRFLkQ0VsF1vzQb9dPuHNcc=
+EtH7CTwAhFhx-2BT-2BsxNapd-2FJiiCMOh2oaARNsWmwqsCHCkAQuCkL8dAsRXExNopM4dX3F-=
+2Fdn2vos6E-2BbAd6tSFeFNHoracHyvHFTGdMMh-2B8U2vaWxTG5Hb3JAUJXod0LX4-2Fs2XLcm=
+0QSCnPp95wzvF-2BzTXp9wURfs-2Fan5Xn3IyGOP0Zn-2FpRWRBJCwqi7BPdn2iDkbN3phszUp6=
+j1bv-2FE39-2B-2Fg-2F7bRl0h7kweyDVX3F9cQNfB8H8lmVByG9Xhyq6KgdLv4BaLw8VjWW-2F=
+wt1hLkp6Rx-2Frr4hc5W493JjPAgaiIwCk6BTTjdTXQYHKKoeq4bCl879qeW9H6bN-2FymXTVd6=
+ec1kVXRKZAbYLuRO21V1FR1hPSnpYcrTwV-2B7ftZm5x4RsVGIsUnwz-2FLSF8JnRlp3kuR1Piy=
+q302NmTrorBlZJPC-2FIjoAjb0cAerYImGJ-2FLhRtQlet3r2FAn-2F8qNUKPEG-2FKVwhVEftU=
+FM1VzJ8wu8GZwc0A9WrxX71SF-2FnskmoN9nlk991xFtYftGVQBvv2H402-2FernV8dohIMrtSk=
+lvXE2VWkSM-2ByALWiyUcRiCLj8acbrAohpr3S9YLlWHp6Hie" target=3D"_blank" style=
+=3D"text-decoration: none">
+											<img src=3D"https://cdns-content.dzcdn.net/campaigner/template-b=
+ase/androidlight.png" alt=3D"Android" style=3D"display: block; max-width: 1=
+06px" width=3D"106" border=3D"0" height=3D"40">
+										</a>
+									</td>
+									<td style=3D"width: 32px" width=3D"32">&nbsp;</td>
+									<td valign=3D"top" align=3D"center">
+										<a href=3D"http://listen.deezer.com/ls/click?upn=3DCcgUPIQpG4DeMG=
+x88BRHYaR0Jzqe2wSr9-2BGr1zZpj5cfGIJ5mbhzS3asFUKui1fQx3SGmsuiGK-2FuEWMXjtLyZ=
+-2FwH0zQXWmXfSaKCO4c3iant8We2Twmgy46RLEeRsRnykHkGbfI4JK-2FcK-2FOIoyl3TJ8O7-=
+2BsMvQjDjVsk7wOdQ806mWEz2DWOlX6uzvSh5yxb8pKf_sY8iD45ISxUmXhR3ab0HQRFLkQ0VsF=
+1vzQb9dPuHNccEtH7CTwAhFhx-2BT-2BsxNapd-2FJiiCMOh2oaARNsWmwqsCHCkAQuCkL8dAsR=
+XExNopM4dX3F-2Fdn2vos6E-2BbAd6tSFeFNHoracHyvHFTGdMMh-2B8U2vaWxTG5Hb3JAUJXod=
+0LX4-2Fs2XLcm0QSCnPp95wzvF-2BzTXp9wURfs-2Fan5Xn3IyGOP0Zn-2FpRWRBJCwqi7BPdn2=
+iDkbN3phszUp6j1bv-2FE39-2B-2Fg-2F7bRl0h7kweyDVX3F9cQNfB8H8lmVByG9Xhyq6KgdLv=
+4BaLw8VjWW-2Fwt1hLkp6Rx-2Frr4hc5W493JjPAgaiIwCk6BTTjdTXQYHKKoeq4bCl879qeW9H=
+6bN-2FymXTVd6ec1kVXRKZAbYLuRO21V1FflL0EazVu9TOteeI-2F4-2F0mFvwIMEtAvwrD1-2F=
+8IRW63q9kpRJaaDaQ-2FVNptzdepNGR2ZKxicfTzszB5p1Sw6-2F-2FtQgEZyjk4NgECHghhBoP=
+KdJuH23yb1S9ZPuqsUL9sON8lK9gecqrVUEdDPSBgWc9cFbq7mAJ1z1NqsUIy8XmHpKHG8mfdxl=
+uWZ-2Bt-2BMUdDCUlVD94ZIJ6HI8m6MC2GNS3c0AILtdGvsxw-2FnTnbiB8A4x" target=3D"_=
+blank" style=3D"text-decoration: none">
+											<img src=3D"https://cdns-content.dzcdn.net/campaigner/template-b=
+ase/desktoplight.png" alt=3D"PC / Mac" style=3D"display: block; max-width: =
+106px" width=3D"106" border=3D"0" height=3D"40">
+										</a>
+									</td>
+								</tr>
+							</tbody>
+							</table>
+						</td>
+					</tr>
+					<tr class=3D"devices">
+						<td style=3D"font-family: 'Roboto', Arial, sans-serif; font-size: 16p=
+x; line-height: 19px; color: #72727D; padding: 0 0 16px" valign=3D"top" ali=
+gn=3D"center">
+							<a href=3D"http://listen.deezer.com/ls/click?upn=3DCcgUPIQpG4DeMGx88=
+BRHYaR0Jzqe2wSr9-2BGr1zZpj5dl79LNRo-2BjGEYX85og-2BGYl-2BlJYEQBysmLTLjs4zs0I=
+iGBhvKKhzBc9bR6wILNocOE-2FBg-2FiFq8jmYh-2Bn1Vr-2BrcqOulNHmsseUGge6Ul9aQxx7m=
+mJx10YvRwWiHnRAtzP8M-3D0CRn_sY8iD45ISxUmXhR3ab0HQRFLkQ0VsF1vzQb9dPuHNccEtH7=
+CTwAhFhx-2BT-2BsxNapd-2FJiiCMOh2oaARNsWmwqsCHCkAQuCkL8dAsRXExNopM4dX3F-2Fdn=
+2vos6E-2BbAd6tSFeFNHoracHyvHFTGdMMh-2B8U2vaWxTG5Hb3JAUJXod0LX4-2Fs2XLcm0QSC=
+nPp95wzvF-2BzTXp9wURfs-2Fan5Xn3IyGOP0Zn-2FpRWRBJCwqi7BPdn2iDkbN3phszUp6j1bv=
+-2FE39-2B-2Fg-2F7bRl0h7kweyDVX3F9cQNfB8H8lmVByG9Xhyq6KgdLv4BaLw8VjWW-2Fwt1h=
+Lkp6Rx-2Frr4hc5W493JjPAgaiIwCk6BTTjdTXQYHKKoeq4bCl879qeW9H6bN-2FymXTVd6ec1k=
+VXRKZAbYLuRO21V1FQH1l-2BvrXjZhL-2Bog-2BFTvCxTLdaCkxqnj5b8C-2FTS9ZiSFlaHqeT7=
+EJvWo-2BEM9DZWDpKqQ4H0eLHQQB60SbeR751HTEkSZ0lxSY-2FvDlue9vJ0oGfWw347Aai3Yj4=
+9-2BAsI9htaN6sxTyp6upHcJFn6E7xkXYgkskgjiHkdH3Xi1vUCUZM44Q6yZExqaBko3lOHreyu=
+2VmTNqanfRcI9LXvAMCPSYGgow8Tt4-2BU2eXEitowk" target=3D"_blank" style=3D"col=
+or:#72727D; text-decoration:underline" class=3D"dark-color-lightgrey">Tous =
+les appareils compatibles</a>
+						</td>
+					</tr>
+					<!--//Devices-->
+
+					<!--HQ Address-->
+					<tr>
+						<td style=3D"font-family: 'Roboto', Arial, sans-serif; font-size: 11p=
+x; line-height: 16px; color: #72727D; padding: 0 16px" valign=3D"top" align=
+=3D"center" class=3D"dark-color-lightgrey">
+							Deezer S.A. =E2=80=93 24 rue de Calais 75009 Paris
+							<br>Enregistr=C3=A9e au RCS de Paris sous le num=C3=A9ro 511 716 573
+						</td>
+					</tr>
+					<!--//HQ Address-->
+
+					<!--Opt-ins & Password-->
+					<tr>
+						<td style=3D"font-family: 'Roboto', Arial, sans-serif; font-size: 11p=
+x; line-height: 13px; color: #72727D; padding: 16px 16px 0px" valign=3D"top=
+" align=3D"center" class=3D"dark-color-lightgrey">
+							 Cet e-mail a =C3=A9t=C3=A9 envoy=C3=A9 =C3=A0 <span class=3D"resetl=
+ink">benitou97@gmail.com</span>=20
+						</td>
+					</tr>
+					<tr>
+						<td style=3D"font-family: 'Roboto', Arial, sans-serif; font-size: 11p=
+x; line-height: 13px; color: #72727D; padding:  0px 16px" valign=3D"top" al=
+ign=3D"center" class=3D"dark-color-lightgrey">
+							<a href=3D"http://listen.deezer.com/ls/click?upn=3DCcgUPIQpG4DeMGx88=
+BRHYeXhOXuKDfcR2s-2FoT5vwDZWbzhg2IO67D3BVPplRUgrI5qWRysB8gKrWlYhWOlCavG4K0m=
+s89s2rouoeCuxQ-2Bxs-3DqGvr_sY8iD45ISxUmXhR3ab0HQRFLkQ0VsF1vzQb9dPuHNccEtH7C=
+TwAhFhx-2BT-2BsxNapd-2FJiiCMOh2oaARNsWmwqsCHCkAQuCkL8dAsRXExNopM4dX3F-2Fdn2=
+vos6E-2BbAd6tSFeFNHoracHyvHFTGdMMh-2B8U2vaWxTG5Hb3JAUJXod0LX4-2Fs2XLcm0QSCn=
+Pp95wzvF-2BzTXp9wURfs-2Fan5Xn3IyGOP0Zn-2FpRWRBJCwqi7BPdn2iDkbN3phszUp6j1bv-=
+2FE39-2B-2Fg-2F7bRl0h7kweyDVX3F9cQNfB8H8lmVByG9Xhyq6KgdLv4BaLw8VjWW-2Fwt1hL=
+kp6Rx-2Frr4hc5W493JjPAgaiIwCk6BTTjdTXQYHKKoeq4bCl879qeW9H6bN-2FymXTVd6ec1kV=
+XRKZAbYLuRO21V1FaGn-2BrA4bKqF90npb0-2BaI-2BC92gb91ZInSHBbB-2FMavF60A3Y3cb4f=
+DeSTjyPfKxVexzG1Y-2B-2FAF2qwLFzLQfix1vOjVdrUwtz1VToeEidBwvqHLF4Vt40SmnmCFp2=
+5fafyJrm57vUVyKHptcQdygb29-2BxQkZ1OKM4-2BSM7hhsacaMzoPgUvzGy08M2o52UnoKjMJp=
+wyjRP-2BboREI0QZ4Y2ZnuHS5gI8kvCMcOwWK1RDsvXe" target=3D"_blank" style=3D"co=
+lor: #72727D; text-decoration: underline" class=3D"dark-color-lightgrey">Me=
+ d=C3=A9sinscrire</a> | <a href=3Dhttp://listen.deezer.com/ls/click?upn=3DC=
+cgUPIQpG4DeMGx88BRHYSVC7C-2FR6zRDJdBSgM5RYu87s9nCcdMrXCCVDCXfPwLez_UA_sY8iD=
+45ISxUmXhR3ab0HQRFLkQ0VsF1vzQb9dPuHNccEtH7CTwAhFhx-2BT-2BsxNapd-2FJiiCMOh2o=
+aARNsWmwqsCHCkAQuCkL8dAsRXExNopM4dX3F-2Fdn2vos6E-2BbAd6tSFeFNHoracHyvHFTGdM=
+Mh-2B8U2vaWxTG5Hb3JAUJXod0LX4-2Fs2XLcm0QSCnPp95wzvF-2BzTXp9wURfs-2Fan5Xn3Iy=
+GOP0Zn-2FpRWRBJCwqi7BPdn2iDkbN3phszUp6j1bv-2FE39-2B-2Fg-2F7bRl0h7kweyDVX3F9=
+cQNfB8H8lmVByG9Xhyq6KgdLv4BaLw8VjWW-2Fwt1hLkp6Rx-2Frr4hc5W493JjPAgaiIwCk6BT=
+TjdTXQYHKKoeq4bCl879qeW9H6bN-2FymXTVd6ec1kVXRKZAbYLuRO21V1FRVeoBjI9PzUUjUOP=
+TpMRQcL3Rnc9IlZ5xEReXKN3Opz7jsMrLcdyjD76Wk73KI31dKHb7X3oMaGpWSKFH6HE5eFhLoM=
+rS5qMfM0AhR5oiMhCFCSseoUVi5z81jggrr68GzXzeuhnGz345-2FYIu-2B4O3FPF4l-2F1BokT=
+jfFI8IMr88D1XmejnCagFILOa5-2BpOCnLDDwdOR2p9jbCvhAMzWgwvxW8gp40cTY2DTK1RT6U9=
+dk target=3D"_blank" style=3D"color:#72727D; text-decoration: underline" cl=
+ass=3D"dark-color-lightgrey">G=C3=A9rer mes pr=C3=A9f=C3=A9rences de notifi=
+cations</a> | <a href=3D"http://listen.deezer.com/ls/click?upn=3DCcgUPIQpG4=
+DeMGx88BRHYSC1cKjA0rVZWIpCSfld8Hft0jvs7uCLk9R1eGb6wQWkwHpg_sY8iD45ISxUmXhR3=
+ab0HQRFLkQ0VsF1vzQb9dPuHNccEtH7CTwAhFhx-2BT-2BsxNapd-2FJiiCMOh2oaARNsWmwqsC=
+HCkAQuCkL8dAsRXExNopM4dX3F-2Fdn2vos6E-2BbAd6tSFeFNHoracHyvHFTGdMMh-2B8U2vaW=
+xTG5Hb3JAUJXod0LX4-2Fs2XLcm0QSCnPp95wzvF-2BzTXp9wURfs-2Fan5Xn3IyGOP0Zn-2FpR=
+WRBJCwqi7BPdn2iDkbN3phszUp6j1bv-2FE39-2B-2Fg-2F7bRl0h7kweyDVX3F9cQNfB8H8lmV=
+ByG9Xhyq6KgdLv4BaLw8VjWW-2Fwt1hLkp6Rx-2Frr4hc5W493JjPAgaiIwCk6BTTjdTXQYHKKo=
+eq4bCl879qeW9H6bN-2FymXTVd6ec1kVXRKZAbYLuRO21V1Fb9cKcG2VY5ujqkvIoW6rOnS-2Fg=
+0AIQbnnk-2F7Vs3kn-2F6bjNLMgJD2YZExOVSZqAG-2FrqAfjbw31bmjt6wRmpcFNjD22tyKs8-=
+2BfXqTTwFExFuJde1Dmd87CIPJ64rqImDqxh60KNjO0oTsHs-2BHgEO7U1KrMCWFPu-2B90mn4j=
+5dkPaQL4-2Br6G29J17faqzfOPZtKV-2BsuNjk5JqIfY7tBdCvKEPL1BExHyeevG1RJvDECaGs5=
+2" target=3D"_blank" style=3D"color: #72727D; text-decoration: underline" c=
+lass=3D"dark-color-lightgrey">Mot de passe oubli=C3=A9 ?</a>
+						</td>
+					</tr>
+					<!--//Opt-ins & Password-->
+					<!--//Section Footer-->
+
+				</tbody>
+				</table>
+				<!--Emailing Container-->
+
+			</td>
+			</tr>
+	</tbody>
+	</table>
+	<!--//Emailing-->
+
+	<img src=3D"http://listen.deezer.com/wf/open?upn=3D67G4Auz-2BFECTYI9G-2FVG=
+d5uwL7QAhk2OcMg09ZoZp83j7DOlJwPiaiAmUFYuuzOslNPNbjr51-2BcqFq-2BgxJ4B07iH8um=
+SihHy0M7sdMZU-2FCnBFWGsNprH8sF7BdkdpIXIu-2Bs10ZmeJKEtLI4olra8S1IakYJP1D2Ptv=
+BwnOmZxFuNBDctRRI7eHHzJD-2FoYHtycPrf7gkX0gmtgjfDV-2F1HGLGEu3VPQbaEHiQlf5yBA=
+gJwzeJQ-2B94DsmiTe2eNrQWXyZsAaFGZ7OecbTAq3y7Z84zoPASqO8JISJQWOg1b0YvArv4aDr=
+wVpNKzQsja8oBbdOVXbl4MAx7IZiVX32Gq2ANtB6vUsFY32ex8Je3QE0Afdwsk4u0JsXAxVoDXY=
+5n3U3nnPKw5WfDD5cL5EFFOjRHmNol6jgomBGUi89kOflfbSF8pCGLZNJOG8vLS-2BxgP5ruTzy=
+mtZOgQIvVCiViBmNvcUETWttriw0hRP1RfCCYQWgBpA0TTanPOdae7wkxWfr5eKdhXohZ8syKF-=
+2BBMIyTiox8jfak0BT-2BAaN3OZBNuwIC7c7nSCjz1SW6fYJ3h3W-2FncXBRTBekMvsQKDUOLnX=
+on9EXP3NC3-2BrWChwBK-2FCIkxBXuhILN1WFnynLTxeuAz" alt=3D"" width=3D"1" heigh=
+t=3D"1" border=3D"0" style=3D"height:1px !important;width:1px !important;bo=
+rder-width:0 !important;margin-top:0 !important;margin-bottom:0 !important;=
+margin-right:0 !important;margin-left:0 !important;padding-top:0 !important=
+;padding-bottom:0 !important;padding-right:0 !important;padding-left:0 !imp=
+ortant;"/></body>
+</html>

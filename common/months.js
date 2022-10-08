@@ -1,3 +1,5 @@
+const { capitalize } = require('./strings');
+
 (function (exports) {
 
     const monthNames = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
@@ -11,6 +13,10 @@
     }
 
     const getMonthFromName = function (name) {
+        name = capitalize(name.trim());
+        if(name === "Fevrier") name = "Février";
+        if(name === "Aout") name = "Août";
+        if(name === "Decembre") name = "Décembre";
         let index = monthNames.indexOf(name);
         if (index == -1) {
             throw new Error(`Name ${name} is not a valid month name.`);
