@@ -14,7 +14,7 @@ router.use('/common', express.static(path.join(__dirname, '../common')));
 
 router.get('/', (req, res) => {
     res.render('index', {
-        subject: 'Test',
+        subject: 'Deezer Monthly data',
         months: common.months.months
     });
 });

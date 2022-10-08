@@ -17,7 +17,7 @@ async function comparePreviousMonth(){
 
     let username = comparePreviousMonthUsernameInput.value;
     let year = comparePreviousMonthYearInput.value;
-    let month = months.getMonthNameFromNumber(comparePreviousMonthMonthDropdown.value);
+    let month = common.months.getMonthNameFromNumber(comparePreviousMonthMonthDropdown.value);
 
     showElement(comparePreviousMonthLoader);
 

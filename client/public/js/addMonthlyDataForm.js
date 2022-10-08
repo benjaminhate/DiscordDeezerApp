@@ -4,6 +4,8 @@ const addMonthlyDataUsernameInput = document.getElementById("addMonthlyDataUsern
 const addMonthlyDataYearInput = document.getElementById("addMonthlyDataYear");
 const addMonthlyDataMonthDropdown = document.getElementById("addMonthlyDataMonth");
 
+const addMonthlyDataEmailInput = document.getElementById("addMonthlyDataEmail");
+
 const addMonthlyDataSongsInput = document.getElementById("addMonthlyDataSongs");
 const addMonthlyDataMinutesInput = document.getElementById("addMonthlyDataMinutes");
 const addMonthlyDataSongsPerDayInput = document.getElementById("addMonthlyDataSongsPerDay");
@@ -26,7 +28,7 @@ async function sendMonthlyData(){
 
     let username = addMonthlyDataUsernameInput.value;
     let year = addMonthlyDataYearInput.value;
-    let month = months.getMonthNameFromNumber(addMonthlyDataMonthDropdown.value);
+    let month = common.months.getMonthNameFromNumber(addMonthlyDataMonthDropdown.value);
     let data = addMonthlyDataGenerateData();
 
     showElement(addMonthlyDataLoader);
@@ -98,4 +100,40 @@ function addMonthlyDataGenerateData(){
             }
         ]
     };
+}
+
+async function getMonthlyDataFromEmail(){
+    if(addMonthlyDataEmailInput === undefined ||
+        addMonthlyDataEmailInput.files.length !== 1){
+            alert("Error with inputs");
+            return
+        }
+
+    let emailData = addMonthlyDataEmailInput.files[0];
+
+    showElement(addMonthlyDataLoader);
+
+    let json = await getDataFromEmail(emailData);
+
+    hideElement(addMonthlyDataLoader);
+
+    if(json.success){
+        fillModalAddMonthlyData(json.result);
+    }else{
+        alert(`Error : ${json.result.msg}`);
+    }
+}
+
+function fillModalAddMonthlyData(data){
+    addMonthlyDataMonthDropdown.value = common.months.getMonthNumberFromName(data.month);
+    addMonthlyDataSongsInput.valueAsNumber = data.songs;
+    addMonthlyDataMinutesInput.valueAsNumber = data.minutes;
+    addMonthlyDataSongsPerDayInput.valueAsNumber = data.songsPerDay;
+    addMonthlyDataTopArtistInput.value = data.topArtist;
+    addMonthlyDataTopSong1NameInput.value = data.topSongs[0].name;
+    addMonthlyDataTopSong1ArtistInput.value = data.topSongs[0].artist;
+    addMonthlyDataTopSong2NameInput.value = data.topSongs[1].name;
+    addMonthlyDataTopSong2ArtistInput.value = data.topSongs[1].artist;
+    addMonthlyDataTopSong3NameInput.value = data.topSongs[2].name;
+    addMonthlyDataTopSong3ArtistInput.value = data.topSongs[2].artist;
 }

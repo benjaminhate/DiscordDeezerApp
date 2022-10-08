@@ -21,7 +21,7 @@ async function searchMonthlyData(){
     }
     let username = monthlyDataUsernameInput.value;
     let year = monthlyDataYearInput.value;
-    let month = months.getMonthNameFromNumber(monthlyDataMonthDropdown.value);
+    let month = common.months.getMonthNameFromNumber(monthlyDataMonthDropdown.value);
 
     showElement(monthlyDataLoader);
     hideElement(monthlyDataContent);
