@@ -11,6 +11,10 @@ async function send(method, url, jsonPayload = null) {
         }
     }
 
+    return await sendToServer(url, options);
+}
+
+async function sendToServer(url, options){
     try {
         const res = await fetch(`${baseUrl}/${url}`, options);
         return {
@@ -43,12 +47,23 @@ function getCompareMessage(user, year1, month1, year2, month2) {
 }
 
 function getCompareMessageFromPreviousMonth(user, year, month) {
-    let previousMonth = months.getPreviousMonth(month);
-    let previousYear = months.getMonthNumberFromName(previousMonth) == 12 ? year - 1 : year;
+    let previousMonth = common.months.getPreviousMonth(month);
+    let previousYear = common.months.getMonthNumberFromName(previousMonth) == 12 ? year - 1 : year;
     return getCompareMessage(user, previousYear, previousMonth, year, month);
 }
 
 function getUserData(user){
     let url = `deezer/${user}`
     return send('GET', url);
+}
+
+function getDataFromEmail(emailData){
+    let url = `emailScraping/data`
+    let formData = new FormData();
+    formData.append('email', emailData);
+    let options = {
+        method: 'POST',
+        body: formData
+    };
+    return sendToServer(url, options);
 }

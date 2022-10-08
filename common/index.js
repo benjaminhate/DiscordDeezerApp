@@ -1,1 +1,2 @@
-exports.months = require('./months.js');
+exports.months = require('./months');
+exports.strings = require('./strings');

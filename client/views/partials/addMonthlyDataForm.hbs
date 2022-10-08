@@ -21,6 +21,13 @@
         <hr>
 
         <div>
+          <input id="addMonthlyDataEmail" type="file" name="email" class="form-control" accept=".eml"/>
+          <button class="btn btn-info" onclick="getMonthlyDataFromEmail()">Récupérer les données depuis le mail</button>
+        </div>
+
+        <hr>
+
+        <div>
             <input id="addMonthlyDataSongs" type="number" class="form-control" placeholder="Songs"/>
             <input id="addMonthlyDataMinutes" type="number" class="form-control" placeholder="Minutes"/>
             <input id="addMonthlyDataSongsPerDay" type="number" class="form-control" placeholder="Songs per day"/>

@@ -1,5 +1,6 @@
 require('dotenv/config');
 const express = require('express');
+const fileUpload = require('express-fileupload');
 const bodyParser = require('body-parser');
 
 const app = express();
@@ -9,6 +10,7 @@ const logger = require('./logger.js');
 const apiRoutes = require('./api').routes;
 const clientServe = require('./client').serve;
 
+app.use(fileUpload());
 app.use(bodyParser.json());
 app.use(logger);
 
