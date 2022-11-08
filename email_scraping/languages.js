@@ -1,3 +1,5 @@
+const { capitalize } = require("../common/strings");
+
 const t = {
     'fr': {
         'Begin': 'Découvrez les titres que vous écoutez le plus',
@@ -36,5 +38,5 @@ exports.$t = function (propertyName, lang) {
 
 exports.monthNumber = function (month, lang){
     const months = t[lang].Months;
-    return months.indexOf(month) + 1;
+    return months.indexOf(capitalize(month)) + 1;
 }
