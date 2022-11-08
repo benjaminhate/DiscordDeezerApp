@@ -7,7 +7,8 @@
     "start": "node server.js",
     "dev": "nodemon server.js --config nodemon.json",
     "build": "npm run build:common",
-    "build:common": "browserify common --s common > client/public/js/common-bundle.js"
+    "build:common": "browserify common --s common > client/public/js/common-bundle.js",
+    "test:email": "node test_email.js email_scraping/tests/email.eml"
   },
   "keywords": [],
   "author": "",

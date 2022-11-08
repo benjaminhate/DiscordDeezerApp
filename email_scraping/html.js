@@ -1,5 +1,6 @@
 const { JSDOM } = require("jsdom");
 const { XPathResult } = require('xpath');
+const { detectLanguage, $t, monthNumber } = require('./languages');
 const { months, strings } = require('../common');
 const deezerMonthlyData = require('../data/deezerMonthlyData');
 const deezerTopSong = require('../data/deezerTopSong');
@@ -7,57 +8,61 @@ const deezerTopSong = require('../data/deezerTopSong');
 exports.scrap = function(htmlString){
     const { document } = (new JSDOM(htmlString)).window;
 
+    const beginText = document.body.firstElementChild.textContent.trim();
+    const language = detectLanguage('Begin', beginText);
+
     return new deezerMonthlyData(
-        getMonthFromDOM(document),
-        getSongsFromDOM(document),
-        getMinutesFromDOM(document),
-        getSongsPerDayFromDOM(document),
-        getTopArtistFromDOM(document),
-        getTopSongsFromDOM(document)
+        getMonthFromDOM(document, language),
+        getSongsFromDOM(document, language),
+        getMinutesFromDOM(document, language),
+        getSongsPerDayFromDOM(document, language),
+        getTopArtistFromDOM(document, language),
+        getTopSongsFromDOM(document, language)
     );
 }
 
-function getMonthFromDOM(document){
-    let matchingElement = getElementFromText(document, 'td', 'Votre mois en musique');
+function getMonthFromDOM(document, language){
+    let matchingElement = getElementFromText(document, 'td', $t('Title', language));
     let element = matchingElement.parentElement.nextElementSibling.firstElementChild;
 
     let month = element.textContent.trim().substring(7);
-    return months.getMonthName(month);
+    let number = monthNumber(month, language);
+    return months.getMonthName(number);
 }
 
-function getSongsFromDOM(document){
-    let matchingElement = getElementFromText(document, 'p', 'Titres');
+function getSongsFromDOM(document, language){
+    let matchingElement = getElementFromText(document, 'p', $t('Songs', language));
     let element = matchingElement.nextElementSibling;
 
     return parseInt(element.textContent.trim());
 }
 
-function getMinutesFromDOM(document){
-    let matchingElement = getElementFromText(document, 'p', 'Nombre de minutes');
+function getMinutesFromDOM(document, language){
+    let matchingElement = getElementFromText(document, 'p', $t('Minutes', language));
     let element = matchingElement.nextElementSibling;
 
     return parseInt(element.textContent.trim());
 }
 
-function getSongsPerDayFromDOM(document){
-    let matchingElement = getElementFromText(document, 'p', 'Nombre moyen de titres par jour');
+function getSongsPerDayFromDOM(document, language){
+    let matchingElement = getElementFromText(document, 'p', $t('SongsPerDay', language));
     let element = matchingElement.nextElementSibling;
 
     return parseInt(element.textContent.trim());
 }
 
-function getTopArtistFromDOM(document){
-    let matchingElement = getElementFromText(document, 'td', 'Votre artiste préféré');
+function getTopArtistFromDOM(document, language){
+    let matchingElement = getElementFromText(document, 'td', $t('TopArtist', language));
     let element = matchingElement.parentElement.nextElementSibling.nextElementSibling.firstElementChild.firstElementChild;
 
     return strings.clean(element.textContent);
 }
 
-function getTopSongsFromDOM(document){
-    let firstMatchingElement = getElementFromText(document, 'td', 'Votre titre préféré');
+function getTopSongsFromDOM(document, language){
+    let firstMatchingElement = getElementFromText(document, 'td', $t('TopSong', language));
     let firstElement = firstMatchingElement.parentElement.nextElementSibling;
 
-    let secondMatchingElement = getElementFromText(document, 'td', 'Vos autres titres préférés');
+    let secondMatchingElement = getElementFromText(document, 'td', $t('OtherTopSongs', language));
     let secondElement = secondMatchingElement.parentElement.nextElementSibling;
     let thirdElement = secondElement.nextElementSibling.nextElementSibling;
 
