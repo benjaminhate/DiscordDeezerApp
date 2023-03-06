@@ -1,17 +1,37 @@
 <h1>Charts</h1>
 
-<div class="input-group col-6">
-    <div class="col-4">
-        {{> modules/usernameInput id="usernameCharts"}}
+<div class="list-group list-group-flush">
+    <div class="list-group-item input-group col-6">
+        <div class="col-4">
+            {{> modules/usernameInput id="usernameCharts1"}}
+        </div>
     </div>
-    <div class="col-2">
-        <button id="compareChartsLoad" class="btn btn-primary" onclick="compareChartsLoad()">Charger</button>
+    <div class="list-group-item input-group col-6">
+        <div class="col-4">
+            {{> modules/usernameInput id="usernameCharts2"}}
+        </div>
     </div>
+    <div class="list-group-item input-group col-6">
+        <div class="col-4">
+            {{> modules/usernameInput id="usernameCharts3"}}
+        </div>
+    </div>
+</div>
+
+<div class="col-2" style="margin-top: 15px;">
+    <button id="compareChartsLoad" class="btn btn-primary" onclick="compareChartsLoad()">Charger</button>
 </div>
 
 <div class="col-12">
     {{> modules/loader id="compareChartsLoader"}}
 </div>
+
+<label for="compareChartsAxisSelect" class="form-label">Sélectionner la valeur</label>
+<select id="compareChartsAxisSelect" class="form-select" aria-label="Default select example" onchange="changeChartAxis()">
+    <option value="songs">Chansons écoutées</option>
+    <option value="minutes">Minutes écoutées</option>
+    <option value="songsPerDay">Chansons écoutées par jour</option>
+</select>
 
 <canvas id="compareChartsContent" width="400" height="100"></canvas>
 
