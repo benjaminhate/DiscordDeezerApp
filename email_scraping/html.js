@@ -2,11 +2,13 @@ const { JSDOM } = require("jsdom");
 const { XPathResult } = require('xpath');
 const { detectLanguage, $t, monthNumber } = require('./languages');
 const { months, strings } = require('../common');
+const quotedPrintable = require('quoted-printable');
 const deezerMonthlyData = require('../data/deezerMonthlyData');
 const deezerTopSong = require('../data/deezerTopSong');
 
 exports.scrap = function(htmlString){
-    const { document } = (new JSDOM(htmlString)).window;
+    let decodedString = quotedPrintable.decode(htmlString)
+    const { document } = (new JSDOM(decodedString)).window;
 
     const beginText = document.body.firstElementChild.textContent.trim();
     const language = detectLanguage('Begin', beginText);
@@ -25,7 +27,7 @@ function getMonthFromDOM(document, language){
     let matchingElement = getElementFromText(document, 'td', $t('Title', language));
     let element = matchingElement.parentElement.nextElementSibling.firstElementChild;
 
-    let month = element.textContent.trim().substring(7);
+    let month = element.textContent.trim().substring(7).trim();
     let number = monthNumber(month, language);
     return months.getMonthName(number);
 }

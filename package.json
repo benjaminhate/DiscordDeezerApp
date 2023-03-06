@@ -25,6 +25,7 @@
     "hbs": "^4.2.0",
     "jsdom": "^20.0.1",
     "node-fetch": "^3.2.3",
+    "quoted-printable": "^1.0.1",
     "underscore": "^1.13.4",
     "xpath": "^0.0.32"
   },
